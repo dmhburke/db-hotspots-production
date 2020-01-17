@@ -1,0 +1,59 @@
+{% extends "home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<div id="addSpotForm" class="shadow">
+  <div id="addSpotFormTitle" class="brandFont brandFontColor">Add new spot</div>
+  <div id="addSpotFormTitleLine" ></div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+  <div id="addSpotFormRowHoriz">
+    <div id="addSpotFormLabelHoriz" class="brandFont brandFontColor">Name</div>
+    <div id="addSpotFormEntryHoriz" class="brandFont brandFontColor"> {{ form.name }} </div>
+  </div>
+  <div id="addSpotFormRowHoriz">
+    <div id="addSpotFormLabelHoriz" class="brandFont brandFontColor">Location</div>
+    <div id="addSpotFormEntryHoriz" class="brandFont brandFontColor"> {{ form.location }} </div>
+  </div>
+  <div id="addSpotFormRowHoriz">
+    <div id="addSpotFormLabelHoriz" class="brandFont brandFontColor">Category</div>
+    <div id="addSpotFormEntryHoriz" class="brandFont brandFontColor">{{ form.category }}</div>
+  </div>
+  <div id="addSpotFormRowHoriz">
+    <div id="addSpotFormLabelHoriz" class="brandFont brandFontColor">Image upload</div>
+    <div id="addSpotFormEntryHoriz" class="brandFont brandFontColor">
+      <div id=imageUploadFormat>
+        <img id=profilePicIcon src="{% static 'icons/spotPicIcon.svg' %}">
+      {{ form.spotpic }}</div></div>
+  </div>
+  <div id="addSpotFormRowVert1">
+    <div id="addSpotFormLabelVert1" class="brandFont brandFontColor">Perfect for</div>
+    <div id="addSpotFormEntryVert1" class="brandFont brandFontColor">
+      <div id=perfectForScrollBox>
+        {{ form.perfect_for }}
+
+      </div></div>
+  </div>
+  <div id="addSpotFormRowVert2">
+    <div id="addSpotFormLabelVert2" class="brandFont brandFontColor">Hot tips</div>
+    <div id="addSpotFormEntryVert2" class="brandFont brandFontColor">{{ form.notes }}</div>
+  </div>
+  <div style="height: 10px;"></div>
+  <div id="addSpotFormRowHoriz">
+    <div id="addSpotFormLabelHoriz" class="brandFont brandFontColor">Your rating</div>
+    <div id="addSpotFormEntryHoriz" class="brandFont brandFontColor">{{ form.rating }}</div>
+  </div>
+
+
+  <button id=addSpotSubmitButton class="brandColor shadow" type="submit">
+    <img id=addSpotSubmitIcon src="{% static 'icons/logoWhite.svg' %}">
+    <div id=addSpotSubmitText class="brandFont whiteFont">Add spot</div>
+  </button>
+  </div>
+  </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<div id=activeNavActivity>
+  <img id=activeNavImg src="{% static 'icons/discoverWhite.svg' %}">
+</div>
+
+<!-- INPUT BOX  -->
+<div id=spotFinderBox class="shadow">
+  <form method="post">
+    {% csrf_token %}
+
+    <div>{{ form.situation }}</div>
+    <div>{{ form.location }}</div>
+    <div>{{ form.category }}</div>
+    <!-- <div>{{ form.source }}</div> -->
+
+    <button id=spotFinderButton class="brandColor brandFont whiteFont" type=submit>Find spots</button>
+  </form>
+</div>
+
+<!-- RESULTS SECTION -->
+
+<div id=findSpotsScrollContainer class=touchScroll>
+{% if spot_finder %}
+{% for spot in hotspots_rank_ranked %}
+
+<a href="{% url 'spotfulldetail' spot.name spot.city %}">
+<div id=spotFinderResult class="shadow">
+  <div class=spotFinderText id=spotFinderAveText>All</div>
+
+  {% if spot.ave_ratings == None %}
+  <div id=spotFinderAveRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+  {% elif spot.ave_ratings >= 4.5 %}
+  <div id=spotFinderAveRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+  {% elif spot.ave_ratings >= 4 %}
+  <div id=spotFinderAveRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+  {% elif spot.ave_ratings >= 3 %}
+  <div id=spotFinderAveRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+  {% elif spot.ave_ratings >= 2 %}
+  <div id=spotFinderAveRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+  {% elif spot.ave_ratings >= 0 %}
+  <div id=spotFinderAveRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+  {% else %}
+  <div id=spotFinderAveRating class="brandFont brandFontColor" style="padding-top: 20px; border: 1px solid #1e8eff;">Hot<br>Spot</div>
+  {% endif %}
+
+  <div class=spotFinderText id=spotFinderCountText>
+    {% if spot.count_ratings == 0 %}
+    {{spot.count_wishlist|floatformat}}
+    {% else %}
+    {{spot.count_ratings|floatformat}}
+    {% endif %}
+    {% if spot.count_ratings == 1 or spot.count_wishlist == 1 %}
+    person
+    {% else %}
+    people
+    {% endif %}
+  </div>
+
+  <div id=spotFinderActivitySpotName class="brandFont brandFontColor">{{spot.name}}</div>
+  <div id=spotFinderSpotCategory>{{spot.category1}}, {{spot.city}}</div>
+  <div id=spotFinderUserBox>
+    <div id=spotFinderImgBox>
+      <div id=spotFinderImgBuffer></div>
+      {% for friend in friends_whove_been %}
+        {% if friend.name == spot.name %}
+        <div id=spotFinderUserImg1 style="background-image: url({{ friend.user.profile.userpic.url }}); background-size: cover"></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div id=spotFinderTextBox>has been here</div> <!--{{spot.count_ratings|floatformat}} have been here -->
+    </div>
+
+    {% if your_rating %}
+    {% for yours in your_rating %}
+      {% if spot.name == yours.name %}
+      <div class=spotFinderText id=spotFinderYouText>You</div>
+
+        {% if yours.rating == None %}
+        <div id=spotFinderYourRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+        {% elif yours.rating == 5 %}
+        <div id=spotFinderYourRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+        {% elif yours.rating == 4 %}
+        <div id=spotFinderYourRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+        {% elif yours.rating == 3 %}
+        <div id=spotFinderYourRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+        {% elif yours.rating == 2 %}
+        <div id=spotFinderYourRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+        {% elif yours.rating == 1 %}
+        <div id=spotFinderYourRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+        {% else %}
+        <div id=spotFinderYourRating class="brandFont brandFontColor" style="padding-top: 20px; border: 1px solid #1e8eff;">Hot<br>Spot</div>
+        {% endif %}
+
+        <div class=spotFinderText id=spotFinderDateText>{{yours.date|date:'d M y'}}</div>
+      {% endif %}
+    {% endfor %}
+    {% else %}
+    {% endif %}
+
+  <!-- <div id=spotFinderActivitySpotName class="brandFont brandFontColor">{{spot.name}}</div>
+  <div id=spotFinderSpotCategory>{{spot.category1}}, {{spot.city}}</div>
+  <div id=spotFinderUserBox>
+    <div id=spotFinderUserImg1></div>
+    <div id=spotFinderUserImg2></div>
+    <div id=spotFinderUserImg3></div>
+    <div id=spotFinderUserImg4></div>
+    <div id=spotFinderUserText4plus>+10 have<br>been here</div>
+  </div> -->
+
+  <!--
+  <div id=spotFinderPerfectForBox>
+
+    {% if spot.perfect_for %}
+    {% for entry in spot.perfect_for %}
+    <div id=spotFinderPerfectForResult class="brandFont brandFontColor">
+      {% if entry == "Something quick"%}
+      Quick
+      {% elif entry == "Impressing guests" %}
+      Impress ppl
+      {% elif entry == "Last-min plans" %}
+      Last-min
+      {% elif entry == "Last-min plans" %}
+      {% else %}
+      {{entry}}
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div id=spotFinderPerfectNoResult class="brandFont">No descriptive data</div>
+    {% endif %}
+
+  </div> -->
+
+</div>
+</a>
+
+{% endfor %}
+{% endif %}
+
+</div>
+
+<!--
+
+{% if spot_finder %}
+{% for spot in spot_finder %}
+
+
+  <div class="brandFont brandFontColor" id=spotFinderResultName>{{ spot.name }}</div>
+    <div id =spotFinderResultAddress>{{spot.category1}}, {{spot.suburb}}</div>
+    <div id =spotFinderResultIndivScore>
+
+      <span class="brandFontColor" style="display: block; font-size: 10px; line-height: 12px; margin-top: 2px;">
+      {% if spot.user == logged_in_user %}
+        {% if spot.rating == "5" %}
+        You rated<br>
+        ALL-TIME
+        {% elif spot.rating == "4" %}
+        You rated<br>
+        LOVE IT
+        {% elif spot.rating == "3" %}
+        You rated<br>
+        LIKE IT
+        {% elif spot.rating == "2" %}
+        You rated<br>
+        MEH...
+        {% elif spot.rating == "0" %}
+        You rated<br>
+        SKIP IT!
+        {% else %}
+        <span style="line-height: 25px; color: grey;" >WL</span>
+        {% endif %}
+      {% else %}
+      HotSpot<br>
+      suggestion
+      {% endif %}
+
+        </span>
+    </div>
+    <div id =spotFinderResultAveScore>
+      <span style="display: block; font-size: 10px; line-height: 12px; margin-top: 2px; color: grey">
+        {% if spot.ave_ratings == 5 %}
+        Ave rated<br>
+        ALL-TIME
+        {% elif spot.ave_ratings == 4 %}
+        Ave rated<br>
+        LOVE IT
+        {% elif spot.ave_ratings == 3 %}
+        Ave rated<br>
+        LIKE IT
+        {% elif spot.ave_ratings == 2 %}
+        Ave rated<br>
+        MEH...
+        {% elif spot.ave_ratings == 0 %}
+        Ave rated<br>
+        SKIP IT!
+        {% else %}
+        <span style="line-height: 25px; color: grey;" >No reviews</span>
+        {% endif %}
+      </span>
+    </div>
+    <div id=spotFinderResultBeenHereBox>
+      <div id=spotFinderResultBeenHereImageBox>
+        <div id=spotFinderResultBeenHereImage></div>
+        <div id=spotFinderResultBeenHereImage></div>
+        <div id=spotFinderResultBeenHereImage></div>
+        <div id=spotFinderResultBeenHereImage></div>
+        <div id=spotFinderResultBeenHereImage></div>
+
+      </div>
+      <div id=spotFinderResultBeenHereText>friends have been here</div>
+      </div>
+
+
+
+</div>
+
+{% endfor %}
+{% endif %}
+ -->
+
+{% endblock %}

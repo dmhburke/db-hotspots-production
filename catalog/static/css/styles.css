@@ -1,0 +1,3587 @@
+* {
+  font-family: verdana;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+}
+
+:root {
+  --mainBrandColor: #1e8eff;
+  --brandFont: 'Special Elite', cursive;
+}
+/* standard form cleanup */
+
+input[type="text"], input[type="password"], input[type="number"] {
+  background-color: #f2f2f2;
+  border: none;
+  shadow: none;
+  padding: 5px;
+  color: #1e8eff;
+  font-size: 16px;
+}
+
+/* Change focus to blue background */
+input[type="text"]:active, input[type="text"]:focus,
+input[type="password"]:active, input[type="password"]:focus,
+input[type="number"]:active, input[type="number"]:focus
+{
+  background-color: #1e8eff;
+  border: none;
+  shadow: none;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+input[type="submit"] {
+  font-family: 'Special Elite', cursive;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #1e8eff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+select {
+  -webkit-appearance: none;
+  text-align-last: center;
+  background-color: #F2f2f2;
+  border: none;
+  color: #1e8eff;
+  font-size: 1.25rem;
+}
+
+select:focus {
+  background-color: #1e8eff;
+  color: white;
+  font-weight: bold;
+}
+
+textarea {
+  border: none;
+  shadow: none;
+  color: #1e8eff;
+  background-color: #F2F2F2;
+  font-size: 1.25rem;
+  font-family: 'Special Elite', verdana
+}
+
+.touchScroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+#id_notes {
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+/* ADVANCED FORM FORMATTING -
+CUSTOM CHECKBOX https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+ON CLICK EVENT here: https://www.w3schools.com/tags/ev_onclick.asp
+JQUERY option: http://jsfiddle.net/jvmwd18e/ */
+
+/* Hide the browser's default checkbox */
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+ul {
+  list-style:none;
+}
+
+li {
+  display: inline-block;
+}
+
+/* Style classes */
+
+.shadow {
+  box-shadow: 1px 1px 5px 2px lightgrey;
+}
+.brandColor {
+  background-color: #1e8eff;
+}
+
+.altColor {
+  background-color: #f2f2f2;
+}
+
+.whiteColor {
+  background-color: white;
+
+}
+.brandFont {
+  font-family: 'Special Elite', verdana;
+  font-size: 1.2rem;
+}
+.titleFont {
+  font-size: 3.5rem;
+}
+.whiteFont {
+  color: white;
+}
+.boldFont {
+  font-weight: bold;
+}
+.brandFontColor {
+  color: #1e8eff;
+}
+.brandBottomBorder {
+  border-bottom: 3px solid #1e8eff;
+}
+.brandTopBorder {
+  border-top: 3px solid #1e8eff;
+}
+
+/* TEMPLATE SETTINGS */
+
+#screenContainer {
+  height: 100vh;
+  width: 100vw;
+  min-width: 150px;
+}
+
+#mobileContainer {
+  width: 375px;
+  height: 645px;
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  /* overflow: scroll; */
+  border-bottom: 3px solid #1e8eff;
+}
+
+#returnToLogin {
+  height: 30px;
+  width: 130px;
+  border-radius: 10px;
+  margin: 10px;
+  float: right;
+  text-align: center;
+  line-height: 30px;
+
+}
+
+#logoStandard {
+  height: 100%;
+  width: 100%;
+}
+
+#addSpotShortcut {
+  height: 75px;
+  width: 75px;
+  border-radius: 100%;
+  border: 3px solid white;
+  position: absolute;
+  bottom: -30px;
+  right: 15px;
+  z-index: 100;
+
+}
+
+#addSpotShortcutLogo {
+  height: 100%;
+  width: 100%;
+}
+
+#logoutButton {
+  height: 40px;
+  width: 120px;
+  line-height: 37px;
+  font-weight: bold;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 140px;
+  z-index: 100;
+  text-align: center;
+  border: 2px solid #1e8eff;
+
+
+}
+
+/* LOGIN */
+
+#loginBox {
+  height: 330px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 40%;
+  position: relative;
+}
+
+#loginHeaderRow {
+  height: 30%;
+  width: 100%;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  font-size: 0px;
+  padding: 0px 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#loginIconBox {
+  height: 85px;
+  width: 85px;
+
+}
+
+#loginTitleBox {
+  height: 80px;
+  width: 190px;
+  line-height: 95px;
+}
+
+#createAcctErrorBox {
+  position: absolute;
+  top: 10px;
+  left: 27px;
+  min-height: 80px;
+  max-height: 100px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  z-index: 100;
+  overflow: scroll;
+
+}
+
+#loginContentRow {
+  padding-top: 10px;
+}
+
+#loginInputRow {
+  height: 55px;
+  width: 90%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#loginInputLabel, #loginInputEntry {
+  height: 100%;
+}
+
+#loginInputLabel {
+  width: 40%;
+  line-height: 55px;
+}
+
+#loginInputEntry {
+  width: 60%;
+}
+
+#id_username, #id_password {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#loginFooterRow {
+  height: 25%;
+  width: 100%;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+  position: absolute;
+  bottom: 0px;
+}
+
+#loginSubmitBox {
+  height: 60px;
+  width: 60%;
+  border-radius: 10px;
+  margin: 10px 60px;
+  padding-top: 5px;
+  text-align: center;
+  line-height: 55px;
+  border: 2px solid white;
+}
+
+#loginSubmitButton {
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  border-radius: 100%;
+  background-color: white;
+
+}
+
+#createAccountNav {
+  width: 200px;
+  margin: 15px auto;
+  text-align: center;
+
+}
+
+/* Create Account Page */
+
+#createAcctBox {
+  height: 550px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 35px;
+  position: relative;
+}
+
+#createAcctHeaderRow {
+  height: 18%;
+  width: 100%;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  font-size: 0px;
+  padding: 0px 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#createAcctInputRow {
+  height: 40px;
+  width: 90%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#createAcctInputLabel, #createAcctEntry {
+    height: 100%;
+}
+
+#createAcctInputLabel {
+  width: 40%;
+  line-height: 40px;
+}
+
+#createAcctEntry {
+  width: 60%;
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
+#id_home_city {
+  position: absolute;
+  top: 2px;
+  left: 25px;
+  padding: 0px 0px;
+
+
+}
+
+#createAcct {
+  display: block;
+  width: 60%;
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  padding: 5px 20px
+
+}
+
+#id_first_name, #id_last_name, #id_username, #id_password1, #id_password2, #id_location {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#imageUploadFormat {
+  height: 100%;
+  width: 100%;
+  background-color: #F2f2f2;
+  display: flex;
+  justify-content: center;
+}
+
+#profilePicIcon {
+  display: block;
+  height:100%;
+}
+
+#id_userpic {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  opacity: 0;
+}
+
+#createAcctFooterRow {
+  height: 20%;
+  width: 100%;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+  position: absolute;
+  bottom: 0px;
+}
+
+#createAcctSubmitBox {
+  display: block;
+  height: 60px;
+  width: 60%;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding-top: 5px;
+  text-align: center;
+  line-height: 55px;
+  border: none;
+  box-shadow: none;
+  font-size: 16px;
+}
+
+/* HOME PAGE */
+
+#homeHeader {
+  height: 95px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+
+#homeLogo {
+  height: 80px;
+  width: 85px;
+  margin-top: 5px;
+
+}
+
+#homeLogoIcon {
+  height: 100%;
+  width: 100%;
+}
+
+#homeTitle {
+  position: absolute;
+  top: 3px;
+  left: 88px;
+  height: 80px;
+  width: 190px;
+  line-height: 100px;
+  padding-left: -10px;
+}
+
+#homeProfileImg {
+  position: absolute;
+  top: 2px;
+  right: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  margin: 16px auto;
+  border-radius: 100%;
+  border: 1px solid #1e8eff;
+
+}
+
+#homeProfileUsername {
+  height: 20px;
+  width: 100px;
+  position: absolute;
+  top: 95px;
+  right: 0px;
+  font-size: 1rem;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+#homeProfilePicture {
+  height: 60%;
+  width: 60%;
+  display: block;
+
+
+}
+
+#navBox {
+  height: 70px;
+  width: 95%;
+  border-radius: 20px;
+  margin: 5px auto;
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+#navCircle {
+  height: 45px;
+  width: 45px;
+  border: 3px solid #1e8eff;
+  border-radius: 100%;
+  margin-top: 5px;
+}
+
+#navIcon {
+  height: 100%;
+  width: 100%;
+}
+
+#textSeeYours, #textCheckLatest, #textDiscoverNew {
+  position: absolute;
+  bottom: 4px;
+  font-size: 1rem;
+}
+
+#textSeeYours {
+  left: 31px;
+}
+
+#textCheckLatest {
+  left: 145px;
+}
+
+#textDiscoverNew {
+  left: 256px;
+}
+
+#homeContent {
+
+}
+
+#homeFooter {
+  height: 100px;
+  width: 100%;
+  position: absolute;;
+  top: 700px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+#addSpotForm {
+  height: 460px;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 10px;
+  position: relative;
+  padding-top: 40px;
+}
+
+#addSpotFormTitle {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 1.25rem;
+}
+
+#addSpotFormTitleLine {
+  position: absolute;
+  height: 1px;
+  border-top: 2px solid #1e8eff;
+  width: 320px;
+  top: 30px;
+  left: 15px;
+}
+
+#addSpotFormRowHoriz {
+  height: 35px;
+  width: 90%;
+  margin: 1px auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#addSpotFormLabelHoriz {
+  line-height: 35px;
+  width: 35%;
+
+}
+
+#addSpotFormEntryHoriz {
+  line-height: 28px;
+  width: 65%;
+}
+
+
+
+#addSpotFormRowVert1 {
+  height: 72px;
+  width: 90%;
+  margin: 0px auto;
+  display: flex;
+  flex-flow: column;
+}
+#addSpotFormLabelVert1 {
+  height: 22px;
+  line-height: 32px;
+  width: 100%;
+}
+#addSpotFormEntryVert1 {
+  height: 50px;
+  line-height: 30px;
+  width: 100%;
+  background-color: #F2F2F2;
+}
+
+#addSpotFormRowVert2 {
+  height: 72px;
+  width: 90%;
+  margin: 0px auto;
+  display: flex;
+  flex-flow: column;
+}
+#addSpotFormLabelVert2 {
+  height: 26px;
+  line-height: 32px;
+  width: 100%;
+  margin-bottom: 2px;
+}
+#addSpotFormEntryVert2 {
+  height: 50px;
+  line-height: 30px;
+  width: 100%;
+
+  background-color: #F2F2F2;
+}
+
+#id_name, #id_category, #id_rating {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+#id_what_good, #id_know_before_go {
+  color: #1e8eff;
+  font-weight: bold;
+  padding: 2px;
+}
+
+#id_spotpic {
+  width: 192px;
+  height: 25px;
+  position: absolute;
+  left: 150px;
+  opacity: 0;
+}
+
+#addSpotSubmitButton {
+  height: 55px;
+  width: 60%;
+  border-radius: 10px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border: 2px solid white;
+}
+
+#addSpotSubmitIcon {
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  top: 0px;
+  left: 30px;
+
+}
+
+#addSpotSubmitText {
+  height: 40px;
+  width: 80px;
+  line-height: 35px;
+  font-size: 1.5rem;
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  left: 90px;
+}
+
+#perfectForScrollBox {
+  height: 95%;
+  width: 99%;
+  padding-top: 3px;
+  padding-left: 5px;
+  background-color: #F2F2F2;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+#perfectForLabelBox {
+  height: 30px;
+  width: 120px;
+}
+
+/* USER SPOTLIST */
+#mainCard {
+  width: 95%;
+  height: 460px;
+  padding-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 15px auto;
+  position: relative;
+}
+
+#mainCardActivity {
+  width: 95%;
+  min-height: 460px;
+  padding-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 15px auto;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+#activeNav {
+  position: absolute;
+  background-color: #1e8eff;
+  top: 116px;
+  left: 47px;
+  height: 43px;
+  width: 43px;
+  border: 3px solid #1e8eff;
+  border-radius: 100%;
+}
+
+#activeNavActivity {
+  position: absolute;
+  background-color: #1e8eff;
+  top: 116px;
+  left: 166px;
+  height: 43px;
+  width: 43px;
+  border: 3px solid #1e8eff;
+  border-radius: 100%;
+}
+
+#activeNavDiscover {
+  position: absolute;
+  background-color: #1e8eff;
+  top: 116px;
+  left: 285px;
+  height: 43px;
+  width: 43px;
+  border: 3px solid #1e8eff;
+  border-radius: 100%;
+}
+
+#activeNavImg {
+  width: 100%;
+}
+
+#buttonRow {
+  width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  padding: 0px 0px;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.selectorButton {
+  height: 100%;
+  width: 45%;
+  text-align: center;
+  line-height: 55px;
+  font-size: 1.5rem
+}
+
+#wishlistButton {
+  display: inline-block;
+  margin-left: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: bold;
+  background-color: #b7b5b5;
+  color: #f2f2f2;
+}
+
+#hitlistButton {
+  display: inline-block;
+  margin-left: 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #f2f2f2;
+  color: #1e8eff;
+}
+
+.resultsBox {
+  width: 94.5%;
+  height: 390px;
+  margin: 0px auto;
+  overflow-y: scroll;
+  border-top: 10px solid #f2f2f2;
+}
+
+#wishlistResults {
+  background-color: #f2f2f2;
+  z-index: 10;
+  position: absolute;
+  left:10px;
+}
+
+#hitlistResults {
+  background-color: #f2f2f2;
+  z-index: 20;
+  position: absolute;
+  left:10px;
+}
+
+
+#spotCard {
+  height: 220px;
+  width: 95%;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 5px;
+  position: relative;
+  background-color: white;
+}
+
+#spotCardImgContainer {
+  height: 60%;
+  width: 100%;
+  border-radius: inherit;
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+#spotCardImg {
+  display: block;
+  margin: 0 auto;
+
+
+}
+
+#spotCardContentBox {
+  width: 100%;
+  position: relative;
+  height: 33%;
+}
+
+#spotCardName {
+  width: 220px;
+  position: absolute;
+  top: -25px;
+  left: 5px;
+  padding: 0px 5px;
+  height: 40px;
+  background-color: white;
+  border: 2px solid #1e8eff;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+#spotCardNameText {
+  position: absolute;
+  top: -16px;
+  left: 15px;
+  width: 210px;
+  height: 30px;
+  color: #1e8eff;
+  font-size: 1.5rem;
+  line-height: 26px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#spotCardDetailsBox {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  width: 250px;
+  height: 20px;
+}
+
+#spotCardDetailsIcon {
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  margin-left: 1px;
+}
+
+#spotCardIcon {
+  height: 100%;
+  width: 100%;
+}
+
+#spotCardIn, #spotCardDetailsLocation {
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 0px;
+  font-size: 1rem;
+  color: grey;
+  padding-right: 5px;
+  float: left;
+}
+
+#spotCardDetailsLocation {
+  font-weight: bold;
+}
+
+#spotCardInfoBox {
+  position: absolute;
+  top: 25px;
+  left: -5px;
+  width: 330px;
+  height: 40px;
+  line-height: 30px;
+  font-size: 0.75rem;
+  color: grey;
+  text-align: left;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding-top: 5px;
+
+
+}
+
+#spotCardPerfectFor {
+  display:inline-block;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+#spotCardRating {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  right: 3px;
+  top: -35px;
+  background-color: #1e8eff;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 23px;
+}
+
+#noSpots {
+  color: lightgrey;
+  font-size: 1.2rem;
+  margin: 0px auto;
+  margin-top: 100px;
+  width: 75%;
+  text-align: center;
+}
+
+#getStarted {
+  background-color:  #1e8eff;
+  height: 30px;
+  line-height: 30px;
+  margin: 0px auto;
+  margin-top: 20px;
+  width: 50%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/*** SPOTDETAIL CARD ***/
+
+#spotDetailCard {
+  width: 95%;
+  height: 210px;
+  margin: 0px auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  position: relative;
+  padding: 2px;
+}
+
+#spotDetailImgBox {
+  width:100%;
+  height: 130px;
+  border-radius: 10px;
+}
+
+#spotDetailImgCarousel {
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  background-color: #f2f2f2;
+  border-radius: inherit;
+}
+
+#spotDetailImg {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+#spotDetailTitleBox {
+  width: 260px;
+  position: absolute;
+  top: 110px;
+  left: 5px;
+  padding: 0px 5px;
+  height: 40px;
+  background-color: white;
+  border: 2px solid #1e8eff;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+#spotDetailTitleText {
+  position: absolute;
+  top: 120px;
+  left: 15px;
+  width: 250px;
+  height: 30px;
+  color: #1e8eff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#spotDetailRating {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  right: 5px;
+  top: 95px;
+  background-color: #1e8eff;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 23px;
+}
+
+#spotDetailInfoBox {
+  position: absolute;
+  top: 150px;
+  left: 10px;
+  width: 250px;
+  height: 20px;
+
+}
+
+#spotDetailIconBox {
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+  margin-left: 1px;
+}
+
+#spotDetailIcon {
+  height: 100%;
+  width: 100%;
+}
+
+#spotDetailIn, #spotDetailLocation {
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 0px;
+  font-size: 1rem;
+  color: grey;
+}
+
+#spotDetailLocation {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+#spotDetailStatsBox {
+  position: absolute;
+  top: 175px;
+  left: 10px;
+  width: 335px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 1rem;
+  color: grey;
+  text-align: center;
+  padding: 2px 10px;
+}
+
+#spotDetailsWishlistBox {
+  height: 25px;
+  width: 47%;
+  display: inline-block;
+  background-color: WHITE;
+  float: left;
+  border-radius: 10px;
+  border: 1px solid #1e8eff;
+
+}
+
+#spotDetailsHitlistBox {
+  height: 25px;
+  width: 47%;
+  display: inline-block;
+  background-color: WHITE;
+  float: right;
+  border-radius: 10px;
+  border: 1px solid #1e8eff;
+}
+
+#spotDetailsWishlistText {
+  height: 100%;
+  width: 100%;
+  line-height: 23px;
+}
+
+#spotRatingCard {
+  width: 95%;
+  height: 110px;
+  margin: 10px auto;
+  border-radius: 10px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#spotRatingUserName {
+  height: 15px;
+  width: 75px;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  font-style: italic;
+  font-size: 1rem;
+  color: grey;
+  text-align: center;
+}
+
+#spotRatingUserBox {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  left: 5px;
+  top: 30px;
+  background-color: lightgrey;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 23px;
+}
+
+#spotRatingDate {
+  height: 15px;
+  width: 100px;
+  position: absolute;
+  top: 15px;
+  right: 2px;
+  font-style: italic;
+  font-size: 1rem;
+  color: grey;
+  text-align: right;
+  padding-right: 5px;
+}
+
+#spotRatingComment {
+  height: 33px;
+  width: 200px;
+  position: absolute;
+  font-size: 1rem;
+  top: 30px;
+  left: 77px;
+  text-align: center;
+  color: grey;
+  overflow-x: hidden;
+  font-style: italic;
+  text-overflow: ellipsis;
+
+}
+
+#spotPerfectForBox {
+  height: 30px;
+  width: 200px;
+  position: absolute;
+  background-color: #f2f2f2;
+  left: 77px;
+  top: 70px;
+  line-height: 25px;
+  font-size: 0.75rem;
+  color: grey;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding-top: 2px;
+  text-align: left;
+  border-radius: 10px;
+}
+
+#spotPerfectForBoxALT {
+  height: 30px;
+  width: 200px;
+  position: absolute;
+  background-color: #f2f2f2;
+  left: 77px;
+  top: 70px;
+  line-height: 25px;
+  font-size: 0.75rem;
+  color: grey;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding-top: 2px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#scrollContainer {
+  height: 420px;
+  overflow: scroll;
+}
+
+#spotRatingRatingBox {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  right: 5px;
+  top: 30px;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 23px;
+}
+
+#activityHeader {
+  width: 95%;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 15px;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 15px;
+  line-height: 35px;
+  font-size: 1.75rem;
+
+}
+
+#activityCard {
+  height: 115px;
+  width: 95%;
+  margin: 5px auto;
+  border-radius: 10px;
+  padding: 5px;
+  padding-bottom: 15px;
+  position: relative;
+  background-color: white;
+
+}
+
+#activityProfileBox {
+  display: inline-block;
+  height: 100%;
+  width: 25%;
+  float: left;
+  padding-top: 18px;
+
+}
+
+#activityContentBox {
+  display: inline-block;
+  height: 100%;
+  width: 50%;
+
+}
+
+#activityDate {
+  height: 20px;
+  line-height: 20px;
+  width: 100%;
+  color: grey;
+}
+
+#activityName {
+  height: 25px;
+  width: 185px;
+  line-height: 27px;
+  font-size: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#activityDetails {
+  height: 20px;
+  width: 100%;
+
+}
+
+#activityIconBox {
+  height: 100%;
+  width: 20px;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+#activityLocationBox {
+  height: 100%;
+  width: 120px;
+  display: inline-block;
+  color: grey;
+  line-height: 20px;
+
+}
+
+#activityNotes {
+  display: table;
+  height: 30px;
+  width: 180px;
+
+  padding: 0px 6px 6px 5px;
+  border-radius: 5px;
+  margin-top: 3px;
+  overflow: scroll;
+
+}
+
+#activityNotesText {
+  display: table-cell;
+  vertical-align: middle;
+  color: grey;
+  font-style: italic;
+  overflow: scroll;
+}
+
+#activityProfileImg {
+  height: 65px;
+  width: 65px;
+  border-radius: 100%;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+}
+
+#activityRatingBox {
+  display: inline-block;
+  height: 100%;
+  width: 25%;
+  float: right;
+  padding-top: 18px;
+
+
+}
+
+#activityRatingValue {
+  height: 65px;
+  width: 65px;
+  border-radius: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5rem;
+  padding-top: 25px;
+
+}
+
+#discoveryCard {
+  height: 110px;
+  width: 95%;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 5px;
+  position: relative;
+  background-color: white;
+}
+
+#discoveryImgBox {
+  height: 100%;
+  width: 130px;
+  display: inline-block;
+  border-radius: 10px;
+  float: left;
+  vertical-align: middle;
+}
+
+#discoveryRatingBox {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+  border-radius: 100%;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 68px;
+  font-size: 1.5rem;
+}
+
+#discoveryContentBox {
+  height: 80px;
+  width: 195px;
+  left: 70px;
+  top: 12px;
+  position: absolute;
+
+}
+
+#discoveryName {
+  height: 30px;
+  width: 170px;
+  line-height: 40px;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#discoveryDetails{
+  height: 25px;
+  width: 100%;
+}
+
+#discoveryDetailsIcon {
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#discoveryDetailsLocation {
+  height: 25px;
+  width: 140px;
+  line-height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  color: grey;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#discoveryDetailsIn {
+  height: 25px;
+  width: 10px;
+  line-height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  color: grey;
+}
+
+#discoveryCount {
+  height: 20px;
+  width: 170px;
+  text-align: right;
+  position: relative;
+}
+
+#discoveryDetailsCountText {
+  height: 25px;
+  width: 100px;
+  line-height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  color: grey;
+}
+
+#discoveryDetailsCountResult {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  line-height: 35px;
+  background-color: #f2f2f2;
+  top: -3px;
+  right: -40px;
+  position: absolute;
+  text-align: center;
+  color: grey;
+  border: 1px solid white;
+}
+
+#detailScrollContainer {
+  height: 280px;
+  width: 100%;
+  overflow: scroll;
+  padding-bottom: 30px;
+}
+
+#discoveryListUserPic {
+  height: 85px;
+  width: 85px;
+  border-radius: 100%;
+  background-color: blue;
+  position: absolute;
+  top: 8px;
+
+}
+
+#discoveryListLegalname {
+  height: 20px;
+  width: 180px;
+  position: absolute;
+  font-size: 1.5rem;
+  top: 15px;
+  left: 100px;
+
+}
+
+#discoveryListUsername {
+  height: 20px;
+  width: 160px;
+  position: absolute;
+  top: 35px;
+  left: 110px;
+  line-height: 20px;
+  font-size: 1.25rem;
+  color: grey;
+}
+
+#discoveryListHighSpot {
+  height: 20px;
+  width: 200px;
+  position: absolute;
+  top: 55px;
+  left: 100px;
+}
+
+#discoveryListHighSpotIcon {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 20px;
+  float: left;
+}
+
+#discoveryListHighSpotValue {
+  height: 25px;
+  width: 160px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 25px;
+  padding-left: 3px;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: grey;
+}
+
+#discoveryListLastSpot {
+  height: 20px;
+  width: 200px;
+  position: absolute;
+  top: 80px;
+  left: 100px;
+}
+
+#discoveryListCountRating {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  text-align: center;
+  line-height: 38px;
+}
+
+#discoveryListCountText {
+  position: absolute;
+  top: 20px;
+  height: 18px;
+  width: 40px;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 20px;
+}
+
+#spotDetailCardUser {
+  width: 95%;
+  height: 160px;
+  margin: 0px auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  position: relative;
+  padding: 2px;
+}
+
+#userDetailImg {
+  height: 85px;
+  width: 85px;
+  border-radius: 100%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#userDetailFullName {
+  height: 20px;
+  width: 180px;
+  position: absolute;
+  top: 15px;
+  left: 102px;
+  font-size: 1.75rem;
+}
+
+#userDetailUsername {
+  height: 20px;
+  width: 110px;
+  position: absolute;
+  top: 42px;
+  left: 110px;
+  color: grey;
+}
+
+#userAveRating {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 1.75rem;
+}
+
+#userAveRatingText {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  font-size: 0.6rem;
+
+}
+
+.userDetailNumberlist {
+  height: 25px;
+  width: 100px;
+  background-color: #F2F2F2;
+  position: absolute;
+  line-height: 23px;
+  top: 70px;
+  border-radius: 10px;
+
+}
+
+#userDetailWishlist {
+  left: 100px;
+}
+
+#userDetailHitlist {
+  left: 210px;
+}
+
+#userDetailWishlistNum {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 23px;
+
+}
+
+
+
+#userActionsBox {
+  height: 52px;
+  width: 92%;
+  border: 1px solid #1e8eff;
+  border-radius: 10px;
+  position: absolute;
+  left: 15px;
+  bottom: 8px;
+}
+
+.userActionContainer {
+  height: 20px;
+  width: 150px;
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  position: absolute;
+}
+
+#userActionFood {
+  top: 4px;
+  left: 6px;
+}
+
+#userActionBar {
+  top: 4px;
+  left: 172px;
+}
+
+#userActionCoffee {
+  top: 27px;
+  left: 6px;
+}
+
+#userActionOther {
+  top: 27px;
+  left: 172px;
+}
+
+#userActionLogo {
+  height: 20px;
+  width: 20px;
+}
+
+#userActionResult {
+  height: 20px;
+  line-height: 20px;
+  position: absolute;
+  left: 25px;
+  display: inline-block;
+}
+
+#userActionPct {
+  height: 20px;
+  width: 40px;
+  line-height: 20px;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  right: 10px;
+}
+
+#userDetailBuffer {
+  height: 5px;
+  width: 10px;
+}
+
+#mainCardUser {
+  width: 95%;
+  min-height: 380px;
+  padding-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 15px auto;
+  position: relative;
+  padding: 2px;
+  padding-bottom: 10px;
+  font-size: 0px;
+}
+
+#mainCardUserPage {
+  width: 95%;
+  min-height: 380px;
+  padding-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 15px auto;
+  position: relative;
+  padding: 2px;
+  padding-bottom: 10px;
+  font-size: 0px;
+}
+
+#testbox {
+  height: 100px;
+  width: 80%;
+  background-color: grey;
+  margin: 10px auto;
+}
+
+#wishlistButtonUser {
+  display: inline-block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: bold;
+  background-color: #b7b5b5;
+  color: #f2f2f2;
+  margin-left: 5px;
+}
+
+#hitlistButtonUser {
+  display: inline-block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #f2f2f2;
+  color: #1e8eff;
+  margin-left: 18px;
+}
+
+#resultsListBox {
+  min-height: 350px;
+  width: 340px;
+  margin-left: 5px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 10px;
+}
+
+#resultsListBoxUserpage {
+  min-height: 400px;
+  width: 334px;
+  margin-left: 10px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 10px;
+}
+
+#wishlistResultsUser {
+  min-height: 320px;
+  width: 0px;
+  background-color: #f2f2f2;
+  border-top: 10px solid #f2f2f2;
+  overflow: hidden;
+
+}
+
+#hitlistResultsUser {
+  min-height: 320px;
+  width: 340px;
+  background-color: #f2f2f2;
+  border-top: 10px solid #f2f2f2;
+  overflow: hidden;
+
+}
+
+#wishlistResultsUserpage {
+  min-height: 320px;
+  width: 0px;
+  background-color: #f2f2f2;
+  border-top: 10px solid #f2f2f2;
+  overflow: hidden;
+}
+
+#hitlistResultsUserpage {
+  min-height: 320px;
+  width: 340px;
+  background-color: #f2f2f2;
+  border-top: 10px solid #f2f2f2;
+  overflow: hidden;
+}
+
+#mainCardDiscover {
+  width: 95%;
+  min-height: 380px;
+  padding-top: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 15px auto;
+  position: relative;
+  padding: 2px;
+  padding-bottom: 10px;
+  font-size: 0px;
+}
+
+#wishlistButtonDiscover {
+  display: inline-block;
+  margin-left: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: bold;
+  background-color: #b7b5b5;
+  color: #f2f2f2;
+}
+
+#hitlistButtonDiscover {
+  display: inline-block;
+  margin-left: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: bold;
+  background-color: #f2f2f2;
+  color: #1e8eff;
+}
+
+#resultsListBoxDiscover {
+  min-height: 400px;
+  width: 334px;
+  margin-left: 10px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 10px;
+}
+
+#hitlistResultsDiscover {
+  min-height: 320px;
+  width: 340px;
+  background-color: #f2f2f2;
+  border-top: 10px solid #f2f2f2;
+  overflow: hidden;
+  margin-left: 0px;
+}
+
+#wishlistResultsDiscover {
+  min-height: 320px;
+  width: 0px;
+  background-color: #f2f2f2;
+  border-top: 10px solid #f2f2f2;
+  overflow: hidden;
+  margin-left: 0px;
+}
+
+#spotCardUserDetail {
+  height: 100px;
+  width: 320px;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 5px;
+  position:relative;
+  background-color: white;
+
+}
+
+#spotImgUserDetail {
+  height: 90px;
+  width: 37%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  position: absolute;
+}
+
+#spotNameUserDetail {
+  height: 25px;
+  width: 180px;
+  position: absolute;
+  font-size: 1.5rem;
+  top: 13px;
+  left: 90px;
+  line-height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#spotRatingUserDetail {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 2rem;
+
+}
+
+#spotDetailsUserDetail {
+  height: 20px;
+  width: 160px;
+  position: absolute;
+  line-height: 20px;
+  top: 35px;
+  left: 95px;
+
+}
+
+#spotNotesUserDetail {
+  height: 35px;
+  width: 175px;
+  position: absolute;
+  top: 58px;
+  left: 100px;
+  color: grey;
+  overflow: scroll;
+  font-style: italic;
+  border-radius: 10px;
+  padding: 3px 6px;
+
+}
+
+#defaultText {
+  font-size: 1rem;
+  color: lightgrey;
+
+}
+
+#activityDefaultText {
+  font-size: 1rem;
+  color: lightgrey;
+  position: absolute;
+  top: 290px;
+  left: 30px;
+  font-size: 1.25rem;
+}
+
+#discoverDefaultText {
+  font-size: 1rem;
+  color: lightgrey;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 1.25rem;
+}
+
+/*** LANDING ADD PAGE ***/
+
+#landingAdd {
+  position: relative;
+  height: 385px;
+  width: 95%;
+  border-radius: 20px;
+  margin: 0px auto;
+  margin-top: 15px;
+  padding: 20px;
+}
+
+#landingSpotLocation {
+  position: absolute;
+  top: 15px;
+  right: 13px;
+  height: 30px;
+  width: 150px;
+}
+
+#id_city {
+  display: block;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: 'Special Elite', verdana;
+}
+
+#id_name {
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Special Elite', verdana;
+}
+
+#landingSpotInput {
+  position: absolute;
+  top: 50px;
+  right: 13px;
+  height: 45px;
+  width: 330px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+
+#landingSpotSubmit {
+  position: absolute;
+  top: 100px;
+  right: 13px;
+  height: 35px;
+  width: 330px;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-size: 16px;
+  border: 1px solid white;
+}
+
+#landingSpotResultContainer {
+  position: absolute;
+  top: 140px;
+  height: 220px;
+  width: 320px;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+#landingSpotResult {
+  height: 40px;
+  width: 310px;
+  margin: 5px auto;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+}
+
+#landingSpotResultNew {
+  height: 40px;
+  width: 310px;
+  line-height: 40px;
+  margin: 5px auto;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+  color: grey;
+}
+
+#detailScrollContainer {
+  width: 100%;
+  min-height: 500px;
+  padding-bottom: 60px;
+}
+
+#addDetailResult {
+  min-height: 330px;
+  width: 350px;
+  padding: 5px;
+  margin: 30px auto;
+  border-radius: 20px;
+  position: relative;
+}
+
+#detailTitleBox {
+  width: 320px;
+  height: 53px;
+  padding: 5px 0px 0px 0px;
+  margin: 2px auto;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 2rem;
+  vertical-align: bottom;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+
+}
+
+#detailTitleSpan {
+  margin: 0 auto;
+  width: 100%;
+  align-self: flex-end;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#detailAddressBox {
+  width: 320px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  text-align: center;
+  color: lightgrey;
+  font-size: 1rem;
+}
+
+#detailImageCarousel {
+  width: 340px;
+  height: 120px;
+  position: absolute;
+  top: 80px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+#detailImage {
+  display: inline-block;
+  margin: 5px auto;
+  height: 100px;
+  width: 120px;
+  border-radius: 10px;
+
+}
+
+#detailImageError {
+  display: block;
+  height: 100px;
+  width: 100px;
+  margin: 5px auto;
+}
+
+#detailResultSummary {
+  height: 40px;
+  width: 330px;
+  margin: 0px auto;
+  position: absolute;
+  top: 198px;
+  left: 10px;
+  border: 2px solid #f2f2f2;
+
+}
+
+#detailResultSummaryText {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 40px;
+  font-size: 12px;
+}
+
+#detailHitlistButton {
+  height: 50px;
+  width: 260px;
+  position: absolute;
+  top: 240px;
+  right: 10px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: 1px solid #1e8eff;
+}
+
+#addDetailsButton {
+  height: 50px;
+  width: 270px;
+  position: absolute;
+  top: 240px;
+  right: 10px;
+  text-align: center;
+  padding-right: 20px;
+  line-height: 52px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: 1px solid #1e8eff;
+
+}
+
+.detailButtonActive {
+  background-color: white; /* #f2f2f2 */
+  color: #1e8eff;
+  border: 1px solid #1e8eff;
+}
+
+#addDetailsReturnButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border: 1px solid #f2f2f2;
+  background-color: #f2f2f2;
+  position: absolute;
+  top: 240px;
+  left: 10px;
+
+}
+
+#detailsBackButton {
+  height: 100%;
+  width: 100%;
+}
+
+#detailsDownButton {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+
+}
+/* THIS ENABLES THE ABSOLUTE SECIONS TO DROP DOWN AND FILL SPACE */
+#detailsAbsBuffer {
+  height: 215px;
+}
+
+#detailsFormContainer {
+  width: 330px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.detailsFormContainerClose {
+  height: 0px; /* RETURN TO 0px */
+}
+
+.detailsFormContainerOpen {
+  height: 240px;
+}
+
+#detailsNotesBox {
+  position: relative;
+  height: 60px;
+  width: 330px;
+  margin: 5px auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 2px 4px;
+  font-size: 16px;
+}
+
+#detailsNotesIcon {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  bottom: 5px;
+  left: 5px;
+}
+
+#detailsPerfectForBox {
+  height: 100px;
+  width: 330px;
+  background-color: #f2f2f2;
+  margin: 2px auto;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+
+#detailsPerfectForItem {
+  font-family: 'Special Elite', verdana;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 3px 0px;
+  margin: auto;
+}
+
+/* .perfectInactive {
+  background-color: white;
+  color: #1e8eff;
+
+} */
+
+
+label {
+  font-family: 'Special Elite', verdana;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+.labelPassive {
+  background-color: white;
+  color: var(--mainBrandColor);
+}
+
+.labelActive {
+  background-color: var(--mainBrandColor);
+  color: white;
+}
+
+.labelActive2 {
+  background-color: var(--mainBrandColor);
+  color: green;
+}
+
+#detailsSubmitButtonRow {
+  position: relative;
+  height: 50px;
+  width: 99%;
+  margin: 10px auto;
+}
+
+#detailWishlistButton {
+  height: 50px;
+  width: 106px;
+  background: #f2f2f2;
+  position: absolute;
+  top: 0px;
+  left: 1px;
+  text-align: center;
+  line-height: 52px;
+  border-radius: 10px;
+  box-shadow: none;
+  border: 1px solid #F2F2F2;
+  font-size: 16px;
+}
+
+#detailAddScore {
+  height: 50px;
+  width: 106px;
+  border-radius: 10px;
+  position: absolute;
+  top: 0px;
+  left: 110px;
+  line-height: 52px;
+  text-align: center;
+  background-color: white;
+}
+
+#id_rating {
+  display: block;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: 'Special Elite', verdana;
+  padding-top: 5px;
+  border: 1px solid #1e8eff;
+}
+
+#detailSubmitButton {
+  height: 50px;
+  width: 106px;
+  background-color: #1e8eff;
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  text-align: center;
+  line-height: 54px;
+  border-radius: 10px;
+  font-size: 16px;
+  border: none;
+}
+
+/*
+#detailRatingBox {
+  height: 60px;
+  width: 330px;
+  border-radius: 10px;
+  background-color: #F2F2F2;
+  position: relative;
+}
+
+#detailSpotPicBox {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background-color: white;
+  padding: 5px;
+}
+
+#spotPicIcon {
+  height: 100%;
+  width: 100%;
+} */
+
+#spotFinderBox {
+  height: 100px;
+  width: 356px;
+  margin: 10px auto;
+  border-radius: 20px;
+  position: relative;
+}
+
+#id_situation {
+  position: absolute;
+  display: block;
+  width: 150px;
+  top: 17px;
+  left: 10px;
+  padding: 5px;
+  font-family: 'Special Elite', cursive;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#id_category {
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 25px;
+  font-size: 16px;
+  top: 17px;
+  left: 257px;
+  padding: 5px;
+  font-family: 'Special Elite', cursive;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#id_location {
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 25px;
+  font-size: 16px;
+  top: 17px;
+  left: 167px;
+  padding: 5px;
+  font-family: 'Special Elite', cursive;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#id_source {
+  position: absolute;
+  display: block;
+  width: 150px;
+  height: 25px;
+  font-size: 16px;
+  bottom: 15px;
+  left: 10px;
+  padding: 5px;
+  font-family: 'Special Elite', cursive;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#spotFinderButton {
+  display: block;
+  height: 35px;
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  left: 28px;
+  bottom: 10px;
+  font-size: 16px;
+  line-height: 35px;
+}
+
+#findSpotsScrollContainer {
+  height: 380px;
+  width: 100%;
+  background-color: white;
+  overflow-y: scroll;
+  padding-bottom: 50px;
+
+}
+
+
+#spotFinderResult {
+  height: 110px;
+  background-color: white;
+  width: 350px;
+  margin: 10px auto;
+  margin-bottom: 15px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  position: relative;
+}
+
+.spotFinderText {
+  color: grey;
+  font-family: verdana;
+  font-size: 8px;
+  position: absolute;
+
+}
+
+#spotFinderAveText {
+  top: 7px;
+  left: 35px;
+}
+
+#spotFinderCountText {
+  bottom: 7px;
+  left: 25px;
+}
+
+#spotFinderYouText {
+  top: 7px;
+  right: 35px;
+}
+
+#spotFinderDateText {
+  bottom: 7px;
+  right: 22px;
+}
+
+#spotFinderAveRating {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  top: 20px;
+  left: 7px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#spotFinderYourRating {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  top: 20px;
+  right: 7px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#spotFinderActivitySpotName {
+  position: absolute;
+  font-size: 18px;
+  width: 180px;
+  top: 25px;
+  left: 87px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#spotFinderSpotCategory {
+  position: absolute;
+  width: 160px;
+  text-align: left;
+  top: 42px;
+  left: 90px;
+  color: grey;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+#spotFinderUserBox {
+  height: 35px;
+  width: 185px;
+  position: absolute;
+  bottom: 18px;
+  left: 80px;
+}
+
+#spotFinderImgBuffer {
+  height: 100%;
+  width: 10px;
+  float: left;
+}
+
+#spotFinderImgBox {
+  height: 100%;
+  min-width: 10px;
+  max-width: 110px;
+  float: left;
+  overflow-x: hidden;
+  padding-right: 0px;
+}
+
+#spotFinderTextBox {
+  min-width: 40px;
+  padding-left: 2px;
+  padding-top: 5px;
+  display: table-cell;
+  vertical-align: middle;
+  color: grey;
+  font-size: 10px;
+  line-height: 22px;
+}
+
+#spotFinderUserImg1 {
+  height: 35px;
+  width: 35px;
+  border: 3px solid white;
+  border-radius: 100%;
+  /* background-color: lightgrey; */
+  float: left;
+  margin-left: -10px;
+}
+
+#spotFinderUserText {
+  height: 90%;
+  color: grey;
+  font-size: 10px;
+  padding-top: 10px;
+
+}
+
+#spotFinderPerfectForBox {
+  height: 67px;
+  width: 75px;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  overflow: hidden;
+}
+
+#spotFinderPerfectForResult {
+  height: 20px;
+  width: 75px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  font-size: 10px;
+  text-align: center;
+  padding-top: 6px;
+}
+
+#spotFinderPerfectNoResult {
+  height: 67px;
+  width: 75px;
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  font-size: 10px;
+  text-align: center;
+  color: lightgrey;
+  padding-top: 20px;
+}
+
+/*
+#spotFinderResultTopBox {
+  height: 30px;
+  width: 100%;
+  position: relative;
+}
+
+#spotFinderResultBottomBox {
+  height: 25px;
+  width: 100%;
+  background-color: lightgrey;
+  position: relative;
+}
+
+#spotFinderResultName {
+  height: 16px;
+  width: 240px;
+  line-height: 20px;
+  font-size: 16px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#spotFinderResultAddress {
+  height: 14px;
+  width: 240px;
+  color: lightgrey;
+  padding-top: 0px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#spotFinderResultIndivScore {
+  height: 28px;
+  width: 80px;
+  background-color: lightgrey;
+  line-height: 20px;
+  font-size: 16px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 10px;
+  text-align: center;
+  padding: 0px;
+  line-height: 12px;
+  border-radius: 5px;
+  color: grey;
+}
+
+#spotFinderResultAveScore {
+  height: 28px;
+  width: 80px;
+  background-color: #f2f2f2;
+  line-height: 20px;
+  font-size: 16px;
+  position: absolute;
+  top: 37px;
+  right: 10px;
+  font-size: 10px;
+  text-align: center;
+  line-height: 12px;
+  border-radius: 5px;
+}
+
+#spotFinderResultBeenHereBox {
+  height: 30px;
+  width: 230px;
+  position: absolute;
+  top: 37px;
+  left: 8px;
+
+}
+
+#spotFinderResultBeenHereImageBox {
+  display: inline-block;
+  height: 100%;
+  width: 105px;
+  vertical-align: middle;
+  padding-top: 2px;
+  padding-left: 12px;
+
+}
+
+#spotFinderResultBeenHereImage {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  background-color: white;
+  margin-left: -10px;
+  border: 1px solid lightgrey;
+}
+
+#spotFinderResultBeenHereText {
+  display: inline-block;
+  height: 100%;
+  width: 120px;
+  line-height: 30px;
+  vertical-align: middle;
+  font-size: 10px;
+  color: grey;
+} */
+
+
+/** BROWSE SPOTS STYLE  SECTION **/
+#browseLineSeparatorTop {
+  height: 1px;
+  width: 320px;
+  border-top: 1px solid #1e8eff;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+#browseLineSeparatorBottom {
+  height: 1px;
+  width: 320px;
+  border-top: 1px solid #1e8eff;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+#browseButtonBar {
+  height: 40px;
+  width: 100%;
+  background-color: white;
+}
+
+.activeBrowseButton {
+  background-color: var(--mainBrandColor);
+  color: white;
+}
+
+#browseButton1, #browseButton2, #browseButton3  {
+  display: inline-block;
+  width: 105px;
+  height: 30px;
+  margin-top: 5px;
+  margin-left: 13px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.removeBrowse {
+  display: none;
+}
+
+.showBrowse {
+  display: block;
+}
+
+#browseAllSpotsScrollContainer {
+  height: 380px;
+  width: 100%;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+#browseMySpotsScrollContainer {
+  height: 380px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+#browseWishlistScrollContainer {
+  height: 380px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+#browseCarouselResultBox {
+  min-height: 90px;
+  background-color: white;
+  width: 350px;
+  margin: 10px auto;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  position: relative;
+}
+
+#browseAllActivityRating {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  top: 10px;
+  left: 7px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.rating5 {
+  background-color: #39FF9E;
+}
+
+.rating4 {
+  background-color: #74FFA9;
+}
+
+.rating3 {
+  background-color: #88FFD5;
+}
+
+.rating2 {
+  background-color: #BDD7EE;
+}
+
+.rating1 {
+  background-color: #FFADC0;
+}
+
+.ratingWL {
+  background-color: #FFFF86;
+}
+
+#browseAllActivitySpot {
+  position: absolute;
+  font-size: 16px;
+  width: 200px;
+  top: 15px;
+  left: 85px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#browseAllActivitySpotCategory {
+  position: absolute;
+  width: 160px;
+  text-align: left;
+  top: 30px;
+  left: 85px;
+  color: grey;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+#browseAllActivityUserImg {
+  height: 45px;
+  width: 45px;
+  border-radius: 100%;
+  background-color: #f2f2f2;
+  position: absolute;
+  top: 25px;
+  right: 15px;
+}
+
+#browseAllActivityUserNotes {
+  position: absolute;
+  top: 45px;
+  left: 88px;
+  height: 35px;
+  width: 177px;
+  font-size: 10px;
+  text-align: left;
+  overflow: hidden;
+  color: grey;
+}
+
+#browseAllActivityUserNotesFalse {
+  position: absolute;
+  top: 51px;
+  left: 83px;
+  padding: 2px;
+  text-align: center;
+  height: 16px;
+  width: 120px;
+  font-size: 10px;
+  overflow: hidden;
+  color: grey;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+
+#spotFullDetailUserNotes {
+  position: absolute;
+  top: 30px;
+  left: 85px;
+  height: 30px;
+  width: 190px;
+  font-size: 10px;
+  text-align: left;
+  overflow: hidden;
+  color: grey;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+#spotFullDetailPerfectForBox {
+  position: absolute;
+  display: inline-block;
+  bottom: 8px;
+  left: 85px;
+  height: 18px;
+  width: 190px;
+  font-size: 10px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  border-radius: 5px;
+  padding: 0px 2px;
+
+}
+
+#spotFullDetailPerfectForResult {
+  display: inline-block;
+  min-width: 40px;
+  height: 18px;
+  line-height: 18px;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 0px 2px;
+  border: 1px solid var(--mainBrandColor);
+
+
+}
+
+#browseAllActivitySpotDate {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  font-size: 10px;
+  color: grey;
+}
+
+#browseAllActivitySpotUsername {
+  position: absolute;
+  width: 60px;
+  text-align: center;
+  right: 2px;
+  bottom: 5px;
+  font-size: 10px;
+  color: grey;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browseNoResultsText {
+  height: 20px;
+  line-height: 18px;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+  color: var(--mainBrandColor);
+  font-family: var(--brandFont);
+  font-size: 20px;
+
+}
+
+#browseNoResultsHomeLink {
+  font-size: 12px;
+  margin-top: 0px;
+  color: grey;
+}
+
+
+
+#browseCarouselUserName {
+  height: 16px;
+  width: 150px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  color: grey;
+  text-align: left;
+  font-size: 10px;
+}
+
+#browseCarouselSpotName {
+  height: 45px;
+  width: 150px;
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  text-align: left;
+  line-height: 45px;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+
+
+#browseCarouselUserRating {
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+  position: absolute;
+  top: 28px;
+  right: 10px;
+}
+
+#browseCarouselUserRatingText {
+  height: 16px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: grey;
+  text-align: left;
+  font-size: 10px;
+}
+
+#spotFullDetailScrollContainer {
+  width: 100%;
+  height: 450px;
+  overflow: scroll;
+  padding-bottom: 30px;
+}
+
+#spotFullDetailResult {
+  height: 370px;
+  width: 350px;
+  padding: 5px;
+  margin: 20px auto;
+  border-radius: 20px;
+  position: relative;
+}
+
+.reviewCircle {
+  height: 90px;
+  width: 90px;
+  border-radius: 100%;
+  position: absolute;
+  top: 265px;
+  text-align: center;
+  font-size: 24px;
+}
+
+#yourReviewCircleRating {
+  right: 10px;
+
+}
+
+#allReviewCircleRating {
+  left: 10px;
+}
+
+.fullDetailReviewText {
+  position: absolute;
+  bottom: 110px;
+  color: #AFABAB;
+}
+
+#fullDetailReviewTextAll {
+  left: 25px;
+}
+
+#fullDetailReviewTextYours {
+  right: 45px;
+}
+
+.detailsButton {
+  height: 40px;
+  width: 120px;
+  position: absolute;
+  border-radius: 10px;
+}
+
+#detailGoBackButton {
+  top: 265px;
+  left: 115px;
+  background-color: #f2f2f2;
+  border: 1px solid #F2F2F2;
+  padding-left: 2px;
+}
+
+#detailAddRatingButton {
+  top: 315px;
+  left: 115px;
+  background-color: white;
+  border: 1px solid var(--mainBrandColor);
+  text-align: center;
+  line-height: 40px;
+}
+
+#detailGoBackButtonIcon {
+  position: absolute;
+  left: 40px;
+  width: 40px
+  }
+
+#spotFullDetailBuffer {
+  height: 200px;
+  width: 100%;
+}
+
+#detailResultsSummaryBox {
+  min-height: 90px;
+  background-color: white;
+  width: 350px;
+  margin: 10px auto;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  }
+
+#reviewCountText {
+  height: 20px;
+  width: 85px;
+  text-align: center;
+  position: absolute;
+  top: 347px;
+  right: 15px;
+  color: grey;
+
+}
+
+#spotDetailsContainer {
+  height: 100px;
+  width: 220px;
+  border: 1px solid grey;
+  position: absolute;
+  top: 250px;
+  left: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* #browseCarousel {
+  display: flex;
+  height: 420px;
+  width: 350px;
+  margin: 0px auto;
+  margin-top: 5px;
+  background-color: white;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-left: 10px;
+}
+
+#browseCarouselChildActivity, #browseCarouselChildWishlist, #browseCarouselChildHitlist {
+  flex: 0 0 auto;
+  height: 390px;
+  width: 320px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 5px;
+  overflow: scroll;
+}
+
+#browseCarouselChildBuffer {
+  flex: 0 0 auto;
+  height: 370px;
+  width: 10px;
+  background-color: white;
+  border-radius: 10px;
+
+}
+
+#browseCarouselTitle {
+  height: 30px;
+  width: 200px;
+  margin: 0px auto;
+  line-height: 40px;
+} */
+
+
+
+
+
+
+
+/** FOR DRINK TRACKER **/
+
+
+#drinkEnterFormBox {
+  width: 330px;
+  border-radius: 10px;
+  margin: 30px auto;
+  padding: 10px;
+  padding-top: 20px;
+
+}
+
+#id_day {
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: 300px;
+  text-align: center;
+  background-color: #f2f2f2;
+  color: black;
+}
+
+#addDaySubmitButton {
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  shadow: none;
+  border: none;
+  background-color: #48BF91;
+  display: block;
+  margin: 10px auto;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#drinkSingleDay {
+  height: 120px;
+  width: 320px;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-sizing: content-box;
+  position: relative;
+}
+
+#drinkSingleDayName {
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  font-size: 16px;
+  top: 10px;
+  left: 20px;
+  color: grey;
+
+}
+
+#drinkSingleDayDrinks {
+  position: absolute;
+  background-color: #F2f2f2;
+  border-radius: 10px;
+  width: 80px;
+  height: 75px;
+  line-height: 110px;
+  font-size: 16px;
+  top: 37px;
+  left: 15px;
+  text-align: center;
+  color: red;
+}
+
+#drinkBeerImg {
+  position: absolute;
+  z-index: 100;
+  top: 47px;
+  left: 42px;
+  height: 30px;
+}
+
+#drinkSingleDayWaters {
+  position: absolute;
+  background-color: #F2f2f2;
+  border-radius: 10px;
+  width: 80px;
+  height: 70px;
+  line-height: 110px;
+  font-size: 16px;
+  top: 40px;
+  left: 115px;
+  text-align: center;
+  color: #48BF91;
+  font-weight: bold;
+}
+
+#drinkWaterImg {
+  position: absolute;
+  z-index: 100;
+  top: 45px;
+  left: 137px;
+  height: 35px;
+}
+
+#drinkSingleDayBAC {
+  position: absolute;
+  background-color: #F2f2f2;
+  width: 85px;
+  height: 85px;
+  line-height: 130px;
+  font-size: 16px;
+  top: 30px;
+  left: 220px;
+  text-align: center;
+  border-radius: 100%;
+  font-weight: bold;
+
+}
+
+#drinkBACImg {
+  position: absolute;
+  z-index: 100;
+  top: 45px;
+  left: 247px;
+  height: 30px;
+
+}
+
+#drinkDetailFormBox {
+  height: 450px;
+  width: 330px;
+  margin: 30px auto;
+  border-radius: 10px;
+  position: relative;
+
+}
+
+#drinkDetailName {
+  padding: 10px 2px;
+  width: 270px;
+
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  border-radius: 5px;
+  color: #48BF91;
+  font-size: 24px;
+}
+
+#id_drinks {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #F2F2F2;
+  text-align: center;
+  top: 75px;
+  right: 30px;
+  border-radius: 5px;
+  color: red;
+  font-size: 16px;
+
+}
+
+#id_waters {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #F2F2F2;
+  text-align: center;
+  top: 175px;
+  right: 30px;
+  border-radius: 5px;
+  color: #48BF91;
+  font-size: 16px;
+
+}
+
+#id_maxBAC {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #F2F2F2;
+  text-align: center;
+  top: 275px;
+  right: 30px;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+
+}
+
+#drinkDetailDrinkImg {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 90px;
+  left: 25px;
+}
+
+#drinkDetailWaterImg {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 185px;
+  left: 25px;
+}
+
+#drinkDetailSpeedoImg {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 290px;
+  left: 25px;
+}
+
+#addDetailsSubmitButton {
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  shadow: none;
+  border: none;
+  background-color: #48BF91;
+  display: block;
+  margin: 10px auto;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+
+#profileWelcomeBox {
+  min-height: 225px;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+
+#profileFeedbackHeader {
+  text-align: center;
+  margin: 5px 0px;
+}
+
+#profileFeedbackGuidance {
+  line-height: 15px;
+  font-size: 10px;
+  width: 100%;
+  text-align: left;
+  color: grey;
+  margin: 5px 0px;
+}
+
+#profileFeedbackEntry {
+  width: 100%;
+  background-color: #F2F2F2;
+  margin: 5px 0px;
+
+}
+
+#profileFeedbackButton {
+  height: 20px;
+  width: 100%;
+  margin: 10px auto;
+  background-color: var(--mainBrandColor);
+  border-radius: 10px;
+  border: none;
+}
+
+#profileFeedbackButtonResponse {
+  height: 20px;
+  line-height: 20px;
+  width: 270px;
+  margin: 10px auto;
+  background-color: var(--mainBrandColor);
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+}
+
+#profileFeedbackImage {
+  height: 120px;
+  width: 60%;
+  border-radius: 10px;
+  /* background-color: #F2F2F2; */
+  margin: 10px auto;
+}
+
+#testjquery {
+  height: 200px;
+  width: 100px;
+  background-color: green;
+}

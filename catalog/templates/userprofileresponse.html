@@ -1,0 +1,15 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<div id=profileWelcomeBox class="shadow">
+  <div id=profileFeedbackHeader class="brandFont brandFontColor">THANKS FOR YOUR FEEDBACK!</div>
+    <div id=profileFeedbackImage style="background-image: url(https://media2.giphy.com/media/XreQmk7ETCak0/giphy.gif); background-size: cover"></div>
+  <a href="{% url 'home' %}">
+  <div id=profileFeedbackButtonResponse class="brandFont whiteFont">Return to HotSpots</div></a>
+</div>
+
+<a href="{% url 'login' %}"><div id=logoutButton class="whiteColor brandFontColor shadow brandFont">Logout</div></a>
+
+{% endblock %}

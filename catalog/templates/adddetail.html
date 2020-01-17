@@ -1,0 +1,95 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+<!-- NAVIGATION BAR - ADDING ACTIVE BLUE CIRCLE -->
+<div id=activeNav>
+  <img id=activeNavImg src="{% static 'icons/latestWhite.svg' %}">
+</div>
+
+<!-- RESULT SECTION  -->
+<div id=detailScrollContainer class=touchScroll>
+<div id="addDetailResult" class=shadow>
+
+  <!-- NAME AND ADRESS  -->
+  <div id="detailTitleBox" class="brandFont brandFontColor">
+    <div id="detailTitleSpan" class="brandFont brandFontColor">{{resultName}}</div></div>
+  <div id="detailAddressBox" class="brandFont">{{resultAddress}}, {{resultCity}}</div>
+
+  <!-- IMAGE CAROUSEL -->
+  <div id="detailImageCarousel">
+    {% if imageResult %}
+      {% for image in imageResult %}
+      <div id=detailImage style="background-image: url({{image.image.thumbnailLink}}); background-size: cover; background-position: 50% 80%"></div>
+      {% endfor %}
+    {% else %}
+    <img id=detailImageError src= "{% static 'icons/noPictureGrey.svg' %}">
+    {% endif %}
+  </div>
+
+  <!-- FRIENDS TRACKER  -->
+  <div id=detailResultSummary class="brandFont">
+    <div id=detailResultSummaryText class="brandFont brandFontColor">
+      {% if friends_here == 0 %}
+      First of your friends here!
+      {% else %}
+      {{friends_here}} of your friends
+      {% if friends_here == 1 %}
+      has
+      {% else %}
+      have
+      {% endif %}
+      been here
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- BUTTON ROW -->
+  <div id=addDetailsReturnButton type=button value="Previous Page" onClick="javascript:history.go(-1);">
+    <img id=detailsBackButton src="{% static 'icons/backButtonWhite.svg' %}">
+  </div>
+  <div id=addDetailsButton class="brandFont brandColor whiteFont">Add to your spots
+    <img id=detailsDownButton src="{% static 'icons/downButtonWhite.svg' %}">
+  </div>
+
+  <!-- JAVASCRIPT DROPDOWN -->
+  <!-- FORM -->
+  <div id=detailsAbsBuffer></div>
+  <div id=detailsFormContainer class="detailsFormContainerClose">
+  <form method="post">
+    {% csrf_token %}
+    <!-- ADD PERFECT_FOR CATEGORIES -->
+    <div id=detailsPerfectForBox>
+      {% for item in form.perfect_for %}
+      <div id=detailsPerfectForItem class="labelPassive">{{item}}</div>
+      {% endfor %}
+    </div>
+    <!-- ADD NOTES -->
+    <div id=detailsNotesBox>
+      <img id=detailsNotesIcon src= "{% static 'icons/notesBlue.svg' %}">
+      <div>{{form.notes}}</div>
+    </div>
+    <!-- SUBMIT BUTTON ROW  -->
+    <div id=detailsSubmitButtonRow>
+      <!-- Add to wishlist -->
+      <button id=detailWishlistButton class="brandFont brandFontColor" type="submit">Wishlist</button>
+      <!-- Add rating score -->
+      <div id=detailAddScore class="brandFont brandFontColor">
+        {{form.rating}}
+      </div>
+      <!-- Add to hitlist -->
+      <button id=detailSubmitButton class="brandFont whiteFont" type="submit">Hitlist</button>
+    </div>
+
+    </form>
+    </div>
+
+  </div>
+
+
+<!-- Use this to test JSON:
+{{resultName}} -->
+
+
+</div>
+{% endblock %}

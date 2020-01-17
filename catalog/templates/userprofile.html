@@ -1,0 +1,26 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<!--
+User picture detail
+<img src="{{user.profile.userpic.url}}" style="height: 40px; width: 40px; border-radius: 10px; margin: 10px"> -->
+
+<!-- <div id=profileWelcomeBox class="shadow">
+<div id=profileWelcome class="brandFontColor">Hey {{first_name}}, a full profile page with all your HotSpots details is coming soon! <br><br>In the meantime, you can leave beta user feedback using this form below.</div>
+</div> -->
+
+<div id=profileWelcomeBox class="shadow">
+  <div id=profileFeedbackHeader class="brandFont brandFontColor">BETA USER FEEDBACK FORM</div>
+  <div id=profileFeedbackGuidance>Thanks so much for being a HotSpots beta user! We'd love any improvements suggestions you have - simply enter them at any time below</div>
+  <form method="post">
+    {% csrf_token %}
+  <div id=profileFeedbackEntry>{{form.feedback}}</div>
+    <button id=profileFeedbackButton class="brandFont whiteFont" type="submit">Send feedback</button>
+  </form>
+</div>
+
+<a href="{% url 'login' %}"><div id=logoutButton class="whiteColor brandFontColor shadow brandFont">Logout</div></a>
+
+{% endblock %}

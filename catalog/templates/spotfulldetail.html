@@ -1,0 +1,195 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+<div id=spotFullDetailScrollContainer class="touchScroll">
+<div id="spotFullDetailResult" class=shadow>
+  <div id="detailTitleBox" class="brandFont brandFontColor">
+    <div id="detailTitleSpan" class="brandFont brandFontColor">{{name}}</div>
+    </div>
+  <div id="detailAddressBox" class="brandFont">{{address}}, {{city}}</div>
+  <div id="detailImageCarousel">
+    {% if imageResult %}
+      {% for image in imageResult %}
+      <div id=detailImage style="background-image: url({{image.image.thumbnailLink}}); background-size: cover; background-position: 50% 80%"></div>
+      {% endfor %}
+      {% else %}
+      <img id=detailImageError src= "{% static 'icons/noPictureGrey.svg' %}">
+      {% endif %}
+  </div>
+  <div id=detailResultSummary class="brandFont">
+    <div id=detailResultSummaryText class="brandFont brandFontColor">
+      {% if numberVisits == 0 %}
+      First of your friends here!
+      {% else %}
+      {{ numberVisits }} of your friends
+      {% if numberVisits == 1 %}
+      has
+      {% else %}
+      have
+      {% endif %}
+      been here
+      {% endif %}
+    </div>
+    </div>
+
+    <!-- <div id=allReviewCircleRating class="reviewCircle ratingWL shadow"></div> -->
+    <!-- ALL REVIEWS - AVERAGE RATING -->
+    <div class=fullDetailReviewText id=fullDetailReviewTextAll>Everyone</div>
+    {% if ave_rating == None %}
+    <div id=allReviewCircleRating class="reviewCircle brandFont ratingWL" style="padding-top: 35px;">WL</div>
+    {% elif ave_rating == 5 %}
+    <div id=allReviewCircleRating class="reviewCircle brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+    {% elif ave_rating == 4 %}
+    <div id=allReviewCircleRating class="reviewCircle brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+    {% elif ave_rating == 3 %}
+    <div id=allReviewCircleRating class="reviewCircle brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+    {% elif ave_rating == 2 %}
+    <div id=allReviewCircleRating class="reviewCircle brandFont rating2" style="padding-top: 35px;">Meh</div>
+    {% elif ave_rating == 1 %}
+    <div id=allReviewCircleRating class="reviewCircle brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+    {% endif %}
+
+
+
+    <!-- BUTTONS IN MIDDLE  -->
+    <div class=detailsButton id=detailGoBackButton type=button value="Previous Page" onClick="javascript:history.go(-1);">
+        <img id="detailGoBackButtonIcon" src="{% static 'icons/backButtonWhite.svg' %}">
+      </div>
+    <a href="{% url 'adddetail' name lat long %}">
+    <div class="detailsButton brandFont brandFontColor" id=detailAddRatingButton>Update rating</div>
+    </a>
+
+    <!-- YOUR REVIEW -->
+    <div class=fullDetailReviewText id=fullDetailReviewTextYours>You</div>
+
+    {% if your_rating == None %}
+      {% if waitlist_or_none > 0 %}
+      <div id=yourReviewCircleRating class="reviewCircle brandFont ratingWL" style="padding-top: 35px;">WL</div>
+      {% else %}
+      <div id=yourReviewCircleRating class="reviewCircle brandFont" style=" color: #F2F2F2; padding-top: 20px;">No <br>rating</div>
+      {% endif %}
+    {% elif your_rating == 5 %}
+    <div id=yourReviewCircleRating class="reviewCircle brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+    {% elif your_rating == 4 %}
+    <div id=yourReviewCircleRating class="reviewCircle brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+    {% elif your_rating == 3 %}
+    <div id=yourReviewCircleRating class="reviewCircle brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+    {% elif your_rating == 2 %}
+    <div id=yourReviewCircleRating class="reviewCircle brandFont rating2" style="padding-top: 35px;">Meh</div>
+    {% elif your_rating == 1 %}
+    <div id=yourReviewCircleRating class="reviewCircle brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+    {% endif %}
+
+
+  </div>
+
+    <!-- LIST OF REVIEWS FROM ALL USERS -->
+
+    {% if review_list %}
+    {% for review in review_list %}
+
+    <div id=browseCarouselResultBox class="shadow">
+
+      {% if review.rating == None %}
+      <div id=browseAllActivityRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+      {% elif review.rating == 5 %}
+      <div id=browseAllActivityRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+      {% elif review.rating == 4 %}
+      <div id=browseAllActivityRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+      {% elif review.rating == 3 %}
+      <div id=browseAllActivityRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+      {% elif review.rating == 2 %}
+      <div id=browseAllActivityRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+      {% elif review.rating == 1 %}
+      <div id=browseAllActivityRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+      {% endif %}
+
+      <div id=browseAllActivitySpot class="brandFont brandFontColor">{{review.user}}</div>
+      {% if review.notes %}
+      <div id=spotFullDetailUserNotes>{{review.notes}}</div>
+      {% else %}
+      <div id=spotFullDetailUserNotes style="">No notes entered</div>
+      {% endif %}
+      <div id=spotFullDetailPerfectForBox>
+        {% if review.perfect_for %}
+        {% for perfect_for in review.perfect_for %}
+        <div id=spotFullDetailPerfectForResult class="brandFont brandFontColor">{{perfect_for}}</div>
+        {% endfor %}
+        {% else %}
+        <div id=spotFullDetailPerfectForResult class="brandFont" style="color: #F2F2F2; border: 1px solid #F2F2F2;">None entered</div>
+        {% endif %}
+      </div>
+
+      <div id=browseAllActivitySpotDate>{{review.date|date:'j M'}}</div>
+      <div id=browseAllActivityUserImg style="background-image: url({{ review.user.profile.userpic.url }}); background-size: cover"></div>
+      <!-- <div id=browseAllActivitySpotUsername>{{review.user}}</div> -->
+
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+
+
+    <!-- {% if aveRating == None %}
+    <div id=reviewCircle class="ratingWL shadow">
+    <div class="brandFont" style="font-size: 24px; margin-top: 25px;">WL <br>only</div></div>
+    {% elif aveRating == 5 %}
+    <div id=reviewCircle class="rating5 shadow">
+    <div class="brandFont" style="font-size: 24px; margin-top: 25px;">All<br>time</div></div>
+    {% elif aveRating == 4 %}
+    <div id=reviewCircle class="rating4 shadow">
+    <div class="brandFont" style="font-size: 24px; margin-top: 25px;">Love<br>it</div></div>
+    {% elif aveRating == 3 %}
+    <div id=reviewCircle class="rating3 shadow">
+    <div class="brandFont" style="font-size: 24px; margin-top: 25px;">Like<br>it</div></div>
+    {% elif aveRating == 2 %}
+    <div id=reviewCircle class="rating2 shadow">
+    <div class="brandFont" style="font-size: 24px; margin-top: 35px;">Meh</div></div>
+    {% elif aveRating == 1 %}
+    <div id=reviewCircle class="rating1 shadow">
+    <div class="brandFont" style="font-size: 24px; margin-top: 25px;">Skip<br>it!</div></div>
+    {% endif %}
+
+  <div id=reviewCountText>
+    {% if countRatings == 1 %}
+    {{countRatings}} review
+    {% else %}
+    {{countRatings}} reviews
+    {% endif %}
+  </div>
+
+  </div>
+  <div id=browseCarouselResultBox class="shadow" style="margin-top:0px">
+
+    <!-- {% if entry.rating == "" %}
+    <div id=browseAllActivityRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+    {% elif entry.rating == '5' %}
+    <div id=browseAllActivityRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+    {% elif entry.rating == '4' %}
+    <div id=browseAllActivityRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+    {% elif entry.rating == '3' %}
+    <div id=browseAllActivityRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+    {% elif entry.rating == '2' %}
+    <div id=browseAllActivityRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+    {% elif entry.rating == '1' %}
+    <div id=browseAllActivityRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+    {% endif %}
+
+    <div id=browseAllActivitySpot class="brandFont brandFontColor">{{entry.name}}</div>
+    <div id=browseAllActivitySpotCategory>{{entry.city}}, {{entry.category1}}</div>
+    <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
+    <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
+    <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
+    <div id=browseAllActivityUserNotes>{{entry.notes}}</div> -->
+
+
+
+
+
+
+
+{% endblock %}

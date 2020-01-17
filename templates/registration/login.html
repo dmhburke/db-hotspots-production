@@ -1,0 +1,74 @@
+{% extends "_login_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<div id="loginBox" class="shadow">
+  <div id=loginHeaderRow class="brandBottomBorder"><div id=loginIconBox>
+    <img id=logoStandard src="{% static 'icons/logoBlue.svg' %}">
+
+  </div><div id=loginTitleBox class="brandFont brandFontColor titleFont">HotSpots</div></div>
+
+  <form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <div id=loginContentRow>
+    <div id=loginInputRow><div id=loginInputLabel class="brandFont brandFontColor">Username</div><div id=loginInputEntry class="brandBottomBorder">{{ form.username }}</div></div>
+    <div id=loginInputRow><div id=loginInputLabel class="brandFont brandFontColor">Password</div><div id=loginInputEntry class="brandBottomBorder">{{ form.password }}</div></div>
+  </div>
+
+  <div id=loginFooterRow class="brandTopBorder">
+
+    <button id=loginSubmitBox class="brandColor brandFont whiteFont boldFont shadow" type="submit">Login<input type="hidden" name="next" value="{{ next }}" /></button>
+
+
+  </div>
+
+
+  </form>
+</div>
+
+<a href="{% url 'createaccount' %}">
+<div id=createAccountNav class="brandFont brandFontColor">Create account?</div></a>
+
+
+
+
+
+<!--
+
+{% if form.errors %}
+ <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+ {% if user.is_authenticated %}
+   <p>Your account doesn't have access to this page. To proceed,
+   please login with an account that has access.</p>
+ {% else %}
+   <p>Please login to see this page.</p>
+ {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+
+<tr>
+ <td>{{ form.username.label_tag }}</td>
+ <td>{{ form.username }}</td>
+</tr>
+
+<tr>
+ <td>{{ form.password.label_tag }}</td>
+ <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+-->
+{% endblock %}

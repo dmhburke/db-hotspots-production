@@ -1,0 +1,73 @@
+{% extends "_login_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<div id="createAcctBox" class="shadow">
+  <div id=createAcctHeaderRow class="brandBottomBorder"><div id=loginIconBox>
+    <img id=logoStandard src="{% static 'icons/logoBlue.svg' %}"></div>
+    <div id=loginTitleBox class="brandFont brandFontColor titleFont">HotSpots</div></div>
+
+    {% if form.errors %}
+    <div id=createAcctErrorBox class="shadow">
+    <b class="brandFontColor brandFont">A couple quick adjustments...</b>
+    {% for key,value in form.errors.items %}
+    {% for error in value %}
+    <div style="text-align: left; padding-top: 5px; color: darkgrey;">{{ error }}</div>
+    {% endfor %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+  <div id=loginContentRow>
+    <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">First name</div>
+      <div id=createAcctEntry class="brandFont brandFontColor">{{ form.first_name }}</div>
+    </div>
+      <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Last name</div>
+        <div id=createAcctEntry class="brandFont brandFontColor">{{ form.last_name }}</div></div>
+      <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Username</div>
+        <div id=createAcctEntry class="brandFont brandFontColor">{{ form.username }}</div></div>
+      <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Profile pic</div>
+        <div id=createAcctEntry class="brandFont brandFontColor">
+          <div id=imageUploadFormat>
+            <img id=profilePicIcon src="{% static 'icons/profilePicIcon.svg' %}">{{ form.userpic }}</div></div></div>
+      <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Set pwd</div>
+        <div id=createAcctEntry class="brandFont brandFontColor">{{ form.password1 }}</div></div>
+      <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Confirm pwd</div>
+        <div id=createAcctEntry class="brandFont brandFontColor">{{ form.password2 }}</div></div>
+        <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Home city</div>
+          <div id=createAcctEntry class="brandFont brandFontColor">
+            <div id="id_home_city">{{ form.homecity }}</div></div></div>
+  </div>
+
+  <div id=createAcctFooterRow class="brandTopBorder">
+      <button id=createAcctSubmitBox class="brandColor brandFont whiteFont boldFont" type="submit">Create account</button>
+  </div>
+  </form>
+</div>
+
+<a href="{% url 'login' %}">
+<div id="createAccountNav" class="brandFont brandFontColor">Return to login</div></a>
+
+
+<!--
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {{ form.first_name }}
+  {{ form.last_name }}
+  {{ form.username }}
+  {{ form.password1 }}
+  {{ form.password2 }}
+  {{ form.userpic }}
+  {{ form.location }}
+
+<input type="submit" value="create" />
+
+
+</form>
+-->
+{% endblock %}

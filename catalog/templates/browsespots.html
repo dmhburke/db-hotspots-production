@@ -1,0 +1,162 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+
+<!-- NAVIGATION BAR WITH ACTIVE CIRCLE -->
+<div id=activeNavDiscover>
+  <img id=activeNavImg src="{% static 'icons/yourSpotsWhite.svg' %}">
+</div>
+
+<div id=browseLineSeparatorTop></div>
+<div id=browseButtonBar>
+  <div id=browseButton1 class="brandFont brandFontColor activeBrowseButton">All activity</div>
+  <div id=browseButton2 class="brandFont brandFontColor">My spots</div>
+  <div id=browseButton3 class="brandFont brandFontColor">My wishlist</div>
+</div>
+<div id=browseLineSeparatorBottom></div>
+
+<!-- ALL ACTIVITY RESULTS -->
+<div id="browseAllSpotsScrollContainer" class="touchScroll">
+
+  {% if activity_stream %}
+    {% for entry in activity_stream %}
+
+<a href="{% url 'spotfulldetail' entry.name entry.city %}">
+<div id=browseCarouselResultBox class="shadow">
+
+  {% if entry.rating == None %}
+  <div id=browseAllActivityRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+  {% elif entry.rating == 5 %}
+  <div id=browseAllActivityRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+  {% elif entry.rating == 4 %}
+  <div id=browseAllActivityRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+  {% elif entry.rating == 3 %}
+  <div id=browseAllActivityRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+  {% elif entry.rating == 2 %}
+  <div id=browseAllActivityRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+  {% elif entry.rating == 1 %}
+  <div id=browseAllActivityRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+  {% endif %}
+
+  <div id=browseAllActivitySpot class="brandFont brandFontColor">{{entry.name}}</div>
+  <div id=browseAllActivitySpotCategory>{{entry.city}}, {{entry.category1}}</div>
+  <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
+  <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
+  <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
+  {% if entry.notes %}
+  <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
+  {% else %}
+  <div id=browseAllActivityUserNotesFalse>No notes entered</div>
+  {% endif %}
+</div>
+</a>
+
+{% endfor %}
+{% else %}
+<!-- ADD TEXT AND LINK HERE FOR NO RESULTS -->
+<div class=browseNoResultsText>No activity yet</div>
+<a href="{% url 'home' %}">
+  <div class=browseNoResultsText id=browseNoResultsHomeLink>Click here to add spots</div>
+</a>
+{% endif %}
+
+</div>
+
+<!-- MY ACTIVITY -->
+<div id="browseMySpotsScrollContainer" class="touchScroll">
+
+    {% if your_spots %}
+      {% for entry in your_spots %}
+
+  <a href="{% url 'spotfulldetail' entry.name entry.city %}">
+  <div id=browseCarouselResultBox class="shadow">
+
+    {% if entry.rating == None %}
+    <div id=browseAllActivityRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+    {% elif entry.rating == 5 %}
+    <div id=browseAllActivityRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+    {% elif entry.rating == 4 %}
+    <div id=browseAllActivityRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+    {% elif entry.rating == 3 %}
+    <div id=browseAllActivityRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+    {% elif entry.rating == 2 %}
+    <div id=browseAllActivityRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+    {% elif entry.rating == 1 %}
+    <div id=browseAllActivityRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+    {% endif %}
+
+    <div id=browseAllActivitySpot class="brandFont brandFontColor">{{entry.name}}</div>
+    <div id=browseAllActivitySpotCategory>{{entry.city}}, {{entry.category1}}</div>
+    <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
+    <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
+    <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
+    {% if entry.notes %}
+    <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
+    {% else %}
+    <div id=browseAllActivityUserNotesFalse>No notes entered</div>
+    {% endif %}
+  </div>
+  </a>
+
+  {% endfor %}
+  {% else %}
+  <div class=browseNoResultsText>No spots added yet</div>
+  <a href="{% url 'home' %}">
+    <div class=browseNoResultsText id=browseNoResultsHomeLink>Click here to add spots</div>
+  </a>
+  {% endif %}
+
+  </div>
+
+<!-- WISHLIST -->
+<div id=browseWishlistScrollContainer class="touchScroll">
+
+  {% if your_wishlist %}
+    {% for entry in your_wishlist %}
+
+  <a href="{% url 'spotfulldetail' entry.name entry.city %}">
+  <div id=browseCarouselResultBox class="shadow">
+
+  {% if entry.rating == None %}
+  <div id=browseAllActivityRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
+  {% elif entry.rating == 5 %}
+  <div id=browseAllActivityRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
+  {% elif entry.rating == 4 %}
+  <div id=browseAllActivityRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
+  {% elif entry.rating == 3 %}
+  <div id=browseAllActivityRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
+  {% elif entry.rating == 2 %}
+  <div id=browseAllActivityRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
+  {% elif entry.rating == 1 %}
+  <div id=browseAllActivityRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
+  {% endif %}
+
+  <div id=browseAllActivitySpot class="brandFont brandFontColor">{{entry.name}}</div>
+  <div id=browseAllActivitySpotCategory>{{entry.city}}, {{entry.category1}}</div>
+  <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
+  <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
+  <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
+  {% if entry.notes %}
+  <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
+  {% else %}
+  <div id=browseAllActivityUserNotesFalse>No notes entered</div>
+  {% endif %}
+  </div>
+  </a>
+
+  {% endfor %}
+  {% else %}
+  <div class=browseNoResultsText>No spots on your wishlist</div>
+  <a href="{% url 'home' %}">
+    <div class=browseNoResultsText id=browseNoResultsHomeLink>Click here to add spots</div>
+  </a>
+  {% endif %}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "_home_template.html" %}
+
+{% block contentName %}
+{% load static %}
+
+<!-- NAVIGATION BOX -->
+<div id=activeNav>
+  <img id=activeNavImg src="{% static 'icons/latestWhite.svg' %}">
+</div>
+
+<div id="landingAdd" class=shadow>
+
+<!-- FORM ENTRY BOX -->
+<form method="post">
+  {% csrf_token %}
+
+  <div id="landingSpotLocation">{{ form.city }}</div>
+  <div id="landingSpotInput">{{ form.name }}</div>
+  <button id="landingSpotSubmit" class="brandFont brandColor whiteFont" type="submit">Search</button>
+
+</form>
+
+<div id="landingSpotResultContainer">
+  {% if search_result %}
+  {% if search_result.meta.code == 200 %}
+  {% for spot in search_result.response.minivenues %}
+  {% if '/' in spot.name %}
+  <div id="landingSpotResult" class="shadow">
+    <span class="brandFont brandFontColor" style="text-overflow: ellipsis; white-space: nowrap;">{{ spot.name }}</span><br>
+    <span style="color: grey; line-height: 10px">{{ spot.location.address }}</span>
+  </div>
+  {% else %}
+  <a href="{% url 'adddetail' spot.name spot.location.lat spot.location.lng %}">
+  <div id="landingSpotResult" class="shadow">
+    <span class="brandFont brandFontColor" style="text-overflow: ellipsis; white-space: nowrap;">{{ spot.name }}</span><br>
+    <span style="color: grey; line-height: 10px">{{ spot.location.address }}</span>
+  </div></a>
+  {% endif %}
+  {% endfor %}
+  <a href="{% url 'home' %}">
+  <div id="landingSpotResultNew" class="shadow brandFont">Not here? Click here to add new</div></a>
+  {% endif %}
+  {% elif search_result.meta.code == 400 %}
+  <a href="{% url 'home' %}">
+  <div id="landingSpotResult" class="shadow brandFont">Not here? Click to add new</div></a>No
+  {% endif %}
+
+</div>
+
+</div>
+
+{% endblock %}
