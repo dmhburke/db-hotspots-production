@@ -27,7 +27,9 @@ SECRET_KEY = 'apf7)vrdt8i*7wmfvb2ut@ae)-pf=ns1a0ctav+#acd-a$olw1'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'db-hotspots-production.herokuapp.com','127.0.0.1',
+    'www.usehotspots.com',
+    'db-hotspots-production.herokuapp.com',
+    '127.0.0.1',
 ]
 
 
