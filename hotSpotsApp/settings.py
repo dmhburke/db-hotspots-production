@@ -26,7 +26,9 @@ SECRET_KEY = 'apf7)vrdt8i*7wmfvb2ut@ae)-pf=ns1a0ctav+#acd-a$olw1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'db-hotspots-production.herokuapp.com','127.0.0.1',
+]
 
 
 # Application definition
