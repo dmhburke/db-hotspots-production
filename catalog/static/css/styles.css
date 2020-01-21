@@ -2557,7 +2557,7 @@ label {
 
 #spotFinderAveText {
   top: 7px;
-  left: 35px;
+  left: 28px;
 }
 
 #spotFinderCountText {
@@ -2891,9 +2891,11 @@ label {
   background-color: white;
   width: 350px;
   margin: 10px auto;
+  margin-bottom: 15px;
   border: 1px solid lightgrey;
   border-radius: 10px;
   position: relative;
+  padding-bottom: 5px;
 }
 
 #browseAllActivityRating {
@@ -2929,6 +2931,12 @@ label {
 
 .ratingWL {
   background-color: #FFFF86;
+}
+
+.ratingNotBeen {
+  background-color: #f2f2f2;
+  /* border: 1px solid #f2f2f2; */
+  color: grey;
 }
 
 #browseAllActivitySpot {
@@ -2994,24 +3002,29 @@ label {
 
 
 #spotFullDetailUserNotes {
-  position: absolute;
+  /* position: relative; */
   top: 30px;
   left: 85px;
-  height: 30px;
+  min-height: 30px;
+  max-height: 130px;
   width: 190px;
   font-size: 10px;
   text-align: left;
   overflow: hidden;
   color: grey;
   border-radius: 5px;
-  padding: 2px;
+  padding: 5px;
+  margin-left: 85px;
+  margin-top: 30px;
+  /* background-color: black; */
 }
 
 #spotFullDetailPerfectForBox {
-  position: absolute;
+  /* background-color: grey; */
+  /* position: absolute; */
   display: inline-block;
   bottom: 8px;
-  left: 85px;
+  margin-left: 85px;
   height: 18px;
   width: 190px;
   font-size: 10px;
@@ -3164,7 +3177,7 @@ label {
 }
 
 #fullDetailReviewTextAll {
-  left: 25px;
+  left: 35px;
 }
 
 #fullDetailReviewTextYours {

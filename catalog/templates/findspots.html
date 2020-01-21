@@ -29,22 +29,22 @@
 
 <a href="{% url 'spotfulldetail' spot.name spot.city %}">
 <div id=spotFinderResult class="shadow">
-  <div class=spotFinderText id=spotFinderAveText>All</div>
+  <div class=spotFinderText id=spotFinderAveText>Others</div>
 
   {% if spot.ave_ratings == None %}
   <div id=spotFinderAveRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
-  {% elif spot.ave_ratings >= 4.5 %}
+  {% elif spot.ave_ratings > 4.4 %}
   <div id=spotFinderAveRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
-  {% elif spot.ave_ratings >= 4 %}
+  {% elif spot.ave_ratings > 3.9 %}
   <div id=spotFinderAveRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
-  {% elif spot.ave_ratings >= 3 %}
+  {% elif spot.ave_ratings > 3 %}
   <div id=spotFinderAveRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
-  {% elif spot.ave_ratings >= 2 %}
+  {% elif spot.ave_ratings > 2 %}
   <div id=spotFinderAveRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
-  {% elif spot.ave_ratings >= 0 %}
+  {% elif spot.ave_ratings > 0 %}
   <div id=spotFinderAveRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
   {% else %}
-  <div id=spotFinderAveRating class="brandFont brandFontColor" style="padding-top: 20px; border: 1px solid #1e8eff;">Hot<br>Spot</div>
+  <!-- <div id=spotFinderAveRating class="brandFont brandFontColor" style="padding-top: 20px; border: 1px solid #1e8eff;">Hot<br>Spot</div> -->
   {% endif %}
 
   <div class=spotFinderText id=spotFinderCountText>
@@ -74,11 +74,11 @@
     <div id=spotFinderTextBox>has been here</div> <!--{{spot.count_ratings|floatformat}} have been here -->
     </div>
 
+    <div class=spotFinderText id=spotFinderYouText>You</div>
     {% if your_rating %}
+    <div id=spotFinderYourRating class="brandFont ratingNotBeen" style="padding-top: 20px;">No<br>rating</div>
     {% for yours in your_rating %}
       {% if spot.name == yours.name %}
-      <div class=spotFinderText id=spotFinderYouText>You</div>
-
         {% if yours.rating == None %}
         <div id=spotFinderYourRating class="brandFont ratingWL" style="padding-top: 27px;">WL</div>
         {% elif yours.rating == 5 %}
@@ -91,14 +91,13 @@
         <div id=spotFinderYourRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
         {% elif yours.rating == 1 %}
         <div id=spotFinderYourRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
-        {% else %}
-        <div id=spotFinderYourRating class="brandFont brandFontColor" style="padding-top: 20px; border: 1px solid #1e8eff;">Hot<br>Spot</div>
+        <!-- {% else %}
+        <div id=spotFinderYourRating class="brandFont ratingWL" style="padding-top: 20px;">Hot<br>Spot</div> -->
         {% endif %}
-
         <div class=spotFinderText id=spotFinderDateText>{{yours.date|date:'d M y'}}</div>
+      {% else %}
       {% endif %}
     {% endfor %}
-    {% else %}
     {% endif %}
 
   <!-- <div id=spotFinderActivitySpotName class="brandFont brandFontColor">{{spot.name}}</div>
