@@ -308,7 +308,7 @@ def findspot(request):
         # Variables for calculations
         par_review_score = Decimal(3.00)
         review_kicker_quotient = Decimal(0.10)
-        wishlist_kicker_quotient = Decimal(4.00)
+        wishlist_kicker_quotient = Decimal(3.5)
 
         # Check if anyone has rated and add crowd_kicker_review
         try:
@@ -317,6 +317,7 @@ def findspot(request):
             count_reviews = SingleLocationRecord.objects.get(name=name).count_ratings #e.g. 1
             crowd_kicker_review = (net_average_score*review_kicker_quotient)*count_reviews # e.g. 2*0.1*1=0.2
         except:
+            average_score = Decimal(0.00)
             crowd_kicker_review = Decimal(0.00)
 
         # Check if anyone has added to wishlist

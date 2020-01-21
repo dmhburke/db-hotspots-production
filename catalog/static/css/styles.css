@@ -2601,6 +2601,8 @@ label {
   position: absolute;
   font-size: 18px;
   width: 180px;
+  height: 18px;
+  line-height: 18px;
   top: 25px;
   left: 87px;
   overflow-x: hidden;
@@ -2942,6 +2944,8 @@ label {
 #browseAllActivitySpot {
   position: absolute;
   font-size: 16px;
+  height: 16px;
+  line-height: 16px;
   width: 200px;
   top: 15px;
   left: 85px;
