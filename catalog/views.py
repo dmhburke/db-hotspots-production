@@ -17,7 +17,7 @@ from django.contrib.auth.models import User
 from catalog.models import CleanReviewModel, SingleLocationRecord, MasterAddModel
 
 #Import forms here
-from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderForm, BetaFeedbackForm
+from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderForm, BetaFeedbackForm#, UserNotificationForm
 
 ## CREATE NEW ACCOUNT using Profile form and model
 def createaccount (request):
@@ -52,12 +52,14 @@ def landingadd(request):
           form = AddSpotsForm(request.POST)
           if form.is_valid():
               search_result = form.search(request)
+
     else:
           form = AddSpotsForm(initial={'city': user_city})
 
     context={
     'form': form,
     'search_result': search_result,
+    # 'notificationForm': notificationForm,
     }
 
     return render(request, 'landingadd.html', context=context)

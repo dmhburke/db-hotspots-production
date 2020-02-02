@@ -194,3 +194,7 @@ def add_lat_long(sender, instance, **kwargs):
 class BetaFeedbackModel(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     feedback = models.CharField(max_length=200, blank=True, null=True)
+
+# class UserNotification(models.Model):
+#     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+#     notification = models.IntegerField(blank=True, null=True)

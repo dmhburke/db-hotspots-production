@@ -35,16 +35,16 @@
 
     <!-- <div id=allReviewCircleRating class="reviewCircle ratingWL shadow"></div> -->
     <!-- ALL REVIEWS - AVERAGE RATING -->
-    <div class=fullDetailReviewText id=fullDetailReviewTextAll>Others</div>
+    <div class=fullDetailReviewText id=fullDetailReviewTextAll>All</div>
     {% if ave_rating == None %}
     <div id=allReviewCircleRating class="reviewCircle brandFont ratingWL" style="padding-top: 35px;">WL</div>
     {% elif ave_rating > 4.4 %}
     <div id=allReviewCircleRating class="reviewCircle brandFont rating5" style="padding-top: 20px;">All<br>time</div>
     {% elif ave_rating > 3.9 %}
     <div id=allReviewCircleRating class="reviewCircle brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
-    {% elif ave_rating > 3 %}
+    {% elif ave_rating > 2.9 %}
     <div id=allReviewCircleRating class="reviewCircle brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
-    {% elif ave_rating > 2 %}
+    {% elif ave_rating > 1.9 %}
     <div id=allReviewCircleRating class="reviewCircle brandFont rating2" style="padding-top: 35px;">Meh</div>
     {% elif ave_rating > 0 %}
     <div id=allReviewCircleRating class="reviewCircle brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>

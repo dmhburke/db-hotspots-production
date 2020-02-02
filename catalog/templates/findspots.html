@@ -37,11 +37,11 @@
   <div id=spotFinderAveRating class="brandFont rating5" style="padding-top: 20px;">All<br>time</div>
   {% elif spot.ave_ratings > 3.9 %}
   <div id=spotFinderAveRating class="brandFont rating4" style="padding-top: 20px;">Love<br>it</div>
-  {% elif spot.ave_ratings > 3 %}
+  {% elif spot.ave_ratings > 2.9 %}
   <div id=spotFinderAveRating class="brandFont rating3" style="padding-top: 20px;">Like<br>it</div>
-  {% elif spot.ave_ratings > 2 %}
+  {% elif spot.ave_ratings > 1.9 %}
   <div id=spotFinderAveRating class="brandFont rating2" style="padding-top: 27px;">Meh</div>
-  {% elif spot.ave_ratings > 0 %}
+  {% elif spot.ave_ratings >= 0 %}
   <div id=spotFinderAveRating class="brandFont rating1" style="padding-top: 20px;">Skip<br>it!</div>
   {% else %}
   <!-- <div id=spotFinderAveRating class="brandFont brandFontColor" style="padding-top: 20px; border: 1px solid #1e8eff;">Hot<br>Spot</div> -->

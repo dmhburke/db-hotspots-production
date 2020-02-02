@@ -42,8 +42,25 @@ $(document).ready(function() {
     $(this).parent().siblings('#browseWishlistScrollContainer').show();
     });
 
+  //INSTRUCTIONS CLOSE/ OPEN
+
+  $("#instructionsWelcome").click(function() {
+    $(this).toggleClass("hide");
+    $(this).siblings("#popupGreyID").toggleClass("hide");
+    $(this).siblings("#popupGreyID").children().toggleClass("hide");
+
+  });
+
+  $("#popupGreyCloseID").click(function() {
+    $(this).toggleClass("hide");
+    $(this).parent().toggleClass("hide");
+    $(this).parent().siblings("#instructionsWelcome").toggleClass("hide");
+
+  });
 
 
+
+  //END DOC READY FUNCTION
   });
 
 

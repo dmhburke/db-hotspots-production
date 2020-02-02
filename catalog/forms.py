@@ -6,7 +6,7 @@ from catalog.choices import *
 import json, requests
 from django.contrib.gis.geoip2 import GeoIP2
 
-from catalog.models import MasterAddModel, BetaFeedbackModel
+from catalog.models import MasterAddModel, BetaFeedbackModel#, UserNotification
 
 #  Extends standard USER form to add userpic and homecity
 class ProfileForm(UserCreationForm):
@@ -87,8 +87,15 @@ class SpotFinderForm(forms.Form):
     #     return sourceQuery
 
 class BetaFeedbackForm(ModelForm):
-    feedback = forms.notes = forms.CharField(widget=forms.Textarea(attrs={"rows":4, "cols":25}), required=False)
+    feedback = forms.CharField(widget=forms.Textarea(attrs={"rows":4, "cols":25}), required=False)
 
     class Meta:
         model = BetaFeedbackModel
         fields = ('feedback',)
+#
+# class UserNotificationForm(ModelForm):
+#     notification = forms.IntegerField(required=True)
+#
+#     class Meta:
+#         model = UserNotification
+#         fields = ('notification',)

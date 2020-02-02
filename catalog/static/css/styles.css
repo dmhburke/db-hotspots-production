@@ -2106,6 +2106,48 @@ li {
 
 }
 
+.instructionsPopUp {
+  position: absolute;
+  height: 26px;
+  width: 150px;
+  border-radius: 10px;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 27px;
+  font-family: var(--brandFont);
+  color: var(--mainBrandColor);
+  border: 2px solid var(--mainBrandColor);
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#instructionsWelcome {
+  left: 20px;
+  top: 14px;
+}
+
+.popupClose {
+  height: 30px;
+  width: 30px;
+  background-color: grey;
+  margin: 0 auto;
+}
+
+.popupGrey {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  /* var(--mainBrandColor); */
+  z-index: 200;
+  opacity: 80%;
+}
+
 #landingSpotResult {
   height: 40px;
   width: 310px;
@@ -3181,7 +3223,7 @@ label {
 }
 
 #fullDetailReviewTextAll {
-  left: 35px;
+  left: 45px;
 }
 
 #fullDetailReviewTextYours {

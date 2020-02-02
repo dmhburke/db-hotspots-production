@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from catalog.models import Profile, SingleLocationRecord, CleanReviewModel, MasterAddModel, BetaFeedbackModel
+from catalog.models import Profile, SingleLocationRecord, CleanReviewModel, MasterAddModel, BetaFeedbackModel#, UserNotification
 
 ## PROFILE ADMIN - extending USER model
 class ProfileAdmin(admin.ModelAdmin):
@@ -36,3 +36,9 @@ class BetaFeedbackModelAdmin(admin.ModelAdmin):
 
 # Register the admin class with the associated model
 admin.site.register(BetaFeedbackModel, BetaFeedbackModelAdmin)
+
+# class UserNotificationAdmin(admin.ModelAdmin):
+#     list_display = ('user', 'notification',)
+#
+# # Register the admin class with the associated model
+# admin.site.register(UserNotification, UserNotificationAdmin)
