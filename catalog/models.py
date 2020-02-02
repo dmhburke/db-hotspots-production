@@ -196,6 +196,10 @@ class BetaFeedbackModel(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     feedback = models.CharField(max_length=200, blank=True, null=True)
 
-# class UserNotification(models.Model):
-#     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-#     notification = models.IntegerField(blank=True, null=True)
+class Notification(models.Model):
+    name = models.CharField(max_length=35, blank=True, null=True)
+    title = models.CharField(max_length=20, blank=True, null=True)
+    body = models.TextField(blank=True, null=True)
+    image_link = models.CharField(max_length=200, null=True)
+    trigger_min = models.IntegerField(blank=True, null=True)
+    trigger_max = models.IntegerField(blank=True, null=True)

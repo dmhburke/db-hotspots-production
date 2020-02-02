@@ -7,11 +7,31 @@
   <img id=activeNavImg src="{% static 'icons/latestWhite.svg' %}">
 </div>
 
+<!-- INSTRUCTIONS TRIGGER AND DETAILS-->
+
+{% if user_activity <= notification_trigger %}
+
+<div class="instructionsPopUpButton shadow" id=instructionsWelcome>
+  <img id=instructionslightBulbIcon src="{% static 'icons/tipsIconBlue.svg' %}"/>
+  Click for tips!</div>
+<div class="popupInstructionWindow hide" id="popupInstructionsWindowJQ">
+  <img class="popupInstructionIcon" src="{% static 'icons/tipsIconBlue.svg' %}"/>
+  <div class="popupInstructionTitle brandFont brandFontColor" id="">{{notification.title}}</div>
+  <div class="popupInstructionBody brandFont" id="">{{notification.body}}</div>
+  <div class="popupInstructionImage" style="background-image: url({{notification.image_link}}); background-size: cover;"></div>
+  <div class="popupCloseButton brandFont" id="popupCloseButtonJQ">OK got it!</div>
+</div>
+
+{% endif %}
+
+
+<!-- END instructions and trigger details -->
+
 <!-- RESULT SECTION  -->
 <div id=detailScrollContainer class=touchScroll>
 <div id="addDetailResult" class=shadow>
 
-  <!-- NAME AND ADRESS  -->
+  <!-- NAME AND ADDRESS  -->
   <div id="detailTitleBox" class="brandFont brandFontColor">
     <div id="detailTitleSpan" class="brandFont brandFontColor">{{resultName}}</div></div>
   <div id="detailAddressBox" class="brandFont">{{resultAddress}}, {{resultCity}}</div>

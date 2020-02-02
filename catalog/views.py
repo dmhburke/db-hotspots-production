@@ -17,7 +17,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 #Import custom models here
-from catalog.models import CleanReviewModel, SingleLocationRecord, MasterAddModel
+from catalog.models import CleanReviewModel, SingleLocationRecord, MasterAddModel, Notification
 
 #Import forms here
 from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderForm, BetaFeedbackForm#, UserNotificationForm
@@ -68,10 +68,26 @@ def landingadd(request):
     else:
           form = AddSpotsForm(initial={'city': user_city})
 
+# TRIGGER SHOWING INSTRUCTIONS
+    user_activity = MasterAddModel.objects.filter(user=logged_in_user).count()
+    print("user activity = " + str(user_activity))
+
+    try:
+        getting_started_trigger = Notification.objects.get(name="Getting Started").trigger_max
+    except:
+        getting_started_trigger = None
+
+    try:
+        getting_started = Notification.objects.get(name="Getting Started")
+    except:
+        getting_started=False
+
     context={
     'form': form,
     'search_result': search_result,
-    # 'notificationForm': notificationForm,
+    'getting_started': getting_started,
+    'getting_started_trigger': getting_started_trigger,
+    'user_activity': user_activity
     }
 
     return render(request, 'landingadd.html', context=context)
@@ -79,6 +95,21 @@ def landingadd(request):
 ## Combine FOURSQUARE API with GOOGLE API to add spot to review or wishlist
 @login_required
 def adddetail(request, name, lat, lng):
+
+# TRIGGER SHOWING INSTRUCTIONS
+    user_activity = MasterAddModel.objects.filter(user=request.user).count()
+    print("user activity = " + str(user_activity))
+
+    try:
+        notification_trigger = Notification.objects.get(name="Adding Spots").trigger_max
+    except:
+        notification_trigger = None
+
+    try:
+        notification = Notification.objects.get(name="Adding Spots")
+    except:
+        notification=False
+
 
 ####FOURSQUARE API####
     lat = lat
@@ -188,6 +219,9 @@ def adddetail(request, name, lat, lng):
     friends_here = CleanReviewModel.objects.filter(name=name).exclude(user=request.user).count()
 
     context = {
+    'notification': notification,
+    'notification_trigger': notification_trigger,
+    'user_activity': notification_trigger,
     'form': form,
     'name': name,
     'targetLocation': targetLocation,

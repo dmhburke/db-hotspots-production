@@ -8,15 +8,24 @@
   <img id=activeNavImg src="{% static 'icons/latestWhite.svg' %}">
 </div>
 
-<div id="landingAdd" class=shadow>
+<!-- INSTRUCTIONS TRIGGER AND DETAILS-->
 
-<div class="instructionsPopUp shadow" id=instructionsWelcome>
-  <!-- <img id=lightBulbIcon src=""> -->
-  Click me first!</div>
-<div class="popupGrey hide" id=popupGreyID>
-  <div class="popupClose hide" id=popupGreyCloseID></div>
+{% if user_activity <= getting_started_trigger %}
+<div class="instructionsPopUpButton shadow" id=instructionsWelcome>
+  <img id=instructionslightBulbIcon src="{% static 'icons/tipsIconBlue.svg' %}"/>
+  Click for tips!</div>
+<div class="popupInstructionWindow hide" id="popupInstructionsWindowJQ">
+  <img class="popupInstructionIcon" src="{% static 'icons/tipsIconBlue.svg' %}"/>
+  <div class="popupInstructionTitle brandFont brandFontColor" id="">{{getting_started.title}}</div>
+  <div class="popupInstructionBody brandFont" id="">{{getting_started.body}}</div>
+  <div class="popupInstructionImage" style="background-image: url({{getting_started.image_link}}); background-size: cover;"></div>
+  <div class="popupCloseButton brandFont" id="popupCloseButtonJQ">OK got it!</div>
 </div>
+{% endif %}
 
+<!-- END INSTRUCTIONS TRIGGER AND DETAILS-->
+
+<div id="landingAdd" class=shadow>
 
 <!-- FORM ENTRY BOX -->
 <form method="post">
