@@ -17,11 +17,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="icon"
     type="image/png"
-    href="{% static '' %}">
+    src="{% static 'icons/logoBlue.svg' %}">
 
+<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" href="https://db-hotspots.s3.us-east-2.amazonaws.com/LocalistLogoAppleTouch.png">
 </head>
 
 <body>
@@ -33,5 +35,9 @@
 {% endblock %}
 
 </div></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+
 </body>
 </html>

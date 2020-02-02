@@ -30,10 +30,17 @@
         <div id=createAcctEntry class="brandFont brandFontColor">{{ form.last_name }}</div></div>
       <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Username</div>
         <div id=createAcctEntry class="brandFont brandFontColor">{{ form.username }}</div></div>
+        <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Email</div>
+          <div id=createAcctEntry class="brandFont brandFontColor">{{ form.email }}</div></div>
       <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Profile pic</div>
         <div id=createAcctEntry class="brandFont brandFontColor">
           <div id=imageUploadFormat>
-            <img id=profilePicIcon src="{% static 'icons/profilePicIcon.svg' %}">{{ form.userpic }}</div></div></div>
+            <img id=profilePicIcon src="{% static 'icons/profilePicIcon.svg' %}">{{ form.userpic }}</div></div>
+            <!-- Image upload confirm -->
+            <img id="profilePicConfirm" class="hide" src=""/>
+            <!-- Image upload confirm -->
+          </div>
+
       <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Set pwd</div>
         <div id=createAcctEntry class="brandFont brandFontColor">{{ form.password1 }}</div></div>
       <div id=createAcctInputRow><div id=createAcctInputLabel class="brandFont brandFontColor">Confirm pwd</div>

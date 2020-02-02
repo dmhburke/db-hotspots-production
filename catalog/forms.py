@@ -10,7 +10,8 @@ from catalog.models import MasterAddModel, BetaFeedbackModel#, UserNotification
 
 #  Extends standard USER form to add userpic and homecity
 class ProfileForm(UserCreationForm):
-    userpic = forms.ImageField(required=False)
+    email = forms.EmailField(max_length=100, required=True)
+    userpic = forms.ImageField(required=True)
     homecity = forms.ChoiceField(choices=CITIES, required=False)
 
     class Meta:

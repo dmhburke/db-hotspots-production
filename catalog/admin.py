@@ -5,7 +5,7 @@ from catalog.models import Profile, SingleLocationRecord, CleanReviewModel, Mast
 
 ## PROFILE ADMIN - extending USER model
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'userpic', 'homecity', 'number_rating',)
+    list_display = ('user', 'email', 'userpic', 'homecity', 'number_rating',)
 
 # Register the admin class with the associated model
 admin.site.register(Profile, ProfileAdmin)

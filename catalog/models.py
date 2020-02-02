@@ -18,6 +18,7 @@ from PIL import Image as Img
 #PROFILE MODEL - extends USER model with userpic and homecity
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.CharField(max_length=100, blank=True, null=True)
     userpic = models.ImageField(upload_to='profilepictures', blank=True, null=True)
     homecity = models.CharField(max_length=30, blank=True, null=True)
     number_rating = models.IntegerField(blank=True, null=True)

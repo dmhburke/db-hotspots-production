@@ -9,6 +9,9 @@ from opencage.geocoder import OpenCageGeocode
 from pprint import pprint
 from operator import itemgetter
 from decimal import Decimal
+#EMAIL TRIGGER
+from django.core.mail import send_mail
+from django.conf import settings
 
 #Import User model here
 from django.contrib.auth.models import User
@@ -23,17 +26,26 @@ from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderFo
 def createaccount (request):
     """Create user account"""
 # Add view details here
+    #Email notification details (triggered on form submit)
+    subject = 'HotSpots | New user registration'
+    message = 'A new user has just signed up. To see sign-up details, click www.usehotspots.com/admin'
+    email_from = settings.EMAIL_HOST_USER
+    email_to = ['dmhburke@gmail.com',] #NOTE: Must be in list form
+
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
+            user.profile.email = form.cleaned_data.get('email')
             user.profile.userpic = form.cleaned_data.get('userpic')
             user.profile.homecity = form.cleaned_data.get('homecity')
             user.profile.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
+            send_mail(subject, message, email_from, email_to, fail_silently=False)
             return redirect('home')
     else:
         form = ProfileForm()

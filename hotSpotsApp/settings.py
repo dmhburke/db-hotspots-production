@@ -167,3 +167,11 @@ LOGIN_REDIRECT_URL = '/'
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+# EMAIL TRIGGER -- FOR COPY/PASTE INCLUSION IN PRODUCTION SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'dmhburke@gmail.com'# UPDATE TO PERSONAL ACCOUNT
+EMAIL_HOST_PASSWORD = CONFIG['EMAIL_HOST_PASSWORD'] #'pzbqyfisbjisddiz' # CONFIG['EMAIL_HOST_PASSWORD'] -- See HotSpots notes for password details
