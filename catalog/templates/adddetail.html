@@ -80,9 +80,63 @@
     {% csrf_token %}
     <!-- ADD PERFECT_FOR CATEGORIES -->
     <div id=detailsPerfectForBox>
-      {% for item in form.perfect_for %}
+      <!-- {% for item in form.perfect_for %}
       <div id=detailsPerfectForItem class="labelPassive">{{item}}</div>
-      {% endfor %}
+      {% endfor %} -->
+      <!--  Breakfast -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest1>Great breakfast</span>
+        <span class="customInput">{{form.pf_breakfast}}</span>
+      </label>
+
+      <!--  Quick lunch -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest2>Quick lunch</span>
+        <span class="customInput">{{form.pf_quick_lunch}}</span>
+      </label>
+
+      <!--  Last-min dinner -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest3>Easy walk-in</span>
+        <span class="customInput">{{form.pf_last_min_dinner}}</span>
+      </label>
+
+      <!--  Impressing guests -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest4>Impress guests</span>
+        <span class="customInput">{{form.pf_impressing_guests}}</span>
+      </label>
+
+      <!--  Date night -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest5>Date night</span>
+        <span class="customInput">{{form.pf_date_night}}</span>
+      </label>
+
+      <!--  Big group -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest6>Big group</span>
+        <span class="customInput">{{form.pf_big_group}}</span>
+      </label>
+
+      <!--  Peace & quiet -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest7>Peace & quiet</span>
+        <span class="customInput">{{form.pf_peace_quiet}}</span>
+      </label>
+
+      <!--  Living large -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest8>Living large</span>
+        <span class="customInput">{{form.pf_living_large}}</span>
+      </label>
+
+      <!--  Sunny days -->
+      <label class="inputContainer">
+        <span class=customLabel id=JQtest9>Sunny days</span>
+        <span class="customInput">{{form.pf_sunny_days}}</span>
+      </label>
+
     </div>
     <!-- ADD NOTES -->
     <div id=detailsNotesBox>

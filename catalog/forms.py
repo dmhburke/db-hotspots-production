@@ -6,7 +6,7 @@ from catalog.choices import *
 import json, requests
 from django.contrib.gis.geoip2 import GeoIP2
 
-from catalog.models import MasterAddModel, BetaFeedbackModel#, UserNotification
+from catalog.models import MasterAddModel, BetaFeedbackModel, X_checkboxtest
 
 #  Extends standard USER form to add userpic and homecity
 class ProfileForm(UserCreationForm):
@@ -57,12 +57,29 @@ class AddSpotsForm(forms.Form):
 # Powers HotSpot reviews within ADDDETAIL view
 class MasterAddForm(ModelForm):
     rating = forms.TypedChoiceField(choices=RATING, required=False, empty_value=None)
-    perfect_for = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple(),choices=PERFECT_FOR, label='', required=False) #NOTE: removed bracket section from widget -- widget=forms.CheckboxSelectMultiple(attrs={'onclick': 'myFunction();'})
+    pf_breakfast = forms.BooleanField(required=False)
+    pf_quick_lunch = forms.BooleanField(required=False)
+    pf_last_min_dinner = forms.BooleanField(required=False)
+    pf_impressing_guests = forms.BooleanField(required=False)
+    pf_date_night = forms.BooleanField(required=False)
+    pf_big_group = forms.BooleanField(required=False)
+    pf_peace_quiet = forms.BooleanField(required=False)
+    pf_living_large = forms.BooleanField(required=False)
+    pf_sunny_days = forms.BooleanField(required=False)
     notes = forms.CharField(widget=forms.Textarea(attrs={"rows":3, "cols":30}), required=False)
 
     class Meta:
         model = MasterAddModel
-        fields = ('rating', 'perfect_for', 'notes',)
+        fields = ('rating', 'pf_breakfast',
+        'pf_quick_lunch',
+        'pf_last_min_dinner',
+        'pf_impressing_guests',
+        'pf_date_night',
+        'pf_big_group',
+        'pf_peace_quiet',
+        'pf_living_large',
+        'pf_sunny_days',
+        'notes',)
 
 # Powers HotSpot search from database based on certain criteria
 class SpotFinderForm(forms.Form):
@@ -93,10 +110,11 @@ class BetaFeedbackForm(ModelForm):
     class Meta:
         model = BetaFeedbackModel
         fields = ('feedback',)
-#
-# class UserNotificationForm(ModelForm):
-#     notification = forms.IntegerField(required=True)
-#
-#     class Meta:
-#         model = UserNotification
-#         fields = ('notification',)
+
+class X_checkboxtestForm(ModelForm):
+    checkbox1 = forms.BooleanField(required=False)
+    checkbox2 = forms.BooleanField(required=False)
+
+    class Meta:
+        model = X_checkboxtest
+        fields = ('checkbox1', 'checkbox2',)

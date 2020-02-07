@@ -19,22 +19,22 @@ RATING = (
     (1.00, "Skip it!"),
 )
 
-PERFECT_FOR = (
-    ("Great breakfast", "Great breakfast"),
-    ("On-the-run", "On-the-run"),
-    ("Last-min dinner", "Last-min dinner"),
-    ("Impressing guests", "Impressing guests"),
-    ("Date night", "Date night"),
-    ("Big group", "Big group"),
-    ("Peace & quiet", "Peace & quiet"),
-    ("Living large", "Living large"),
-    ("Sunny days", "Sunny days"),
-    )
+# PERFECT_FOR = (
+#     ("Good breakfast", "Good breakfast"),
+#     ("Quick lunch", "Quick lunch"),
+#     ("Last-min dinner", "Last-min dinner"),
+#     ("Impressing guests", "Impressing guests"),
+#     ("Date night", "Date night"),
+#     ("Big group", "Big group"),
+#     ("Peace & quiet", "Peace & quiet"),
+#     ("Living large", "Living large"),
+#     ("Sunny days", "Sunny days"),
+#     )
 
 SITUATION = (
     ("", "Situation"),
-    ("Great breakfast", "Great breakfast"),
-    ("On-the-run", "On-the-run"),
+    ("Good breakfast", "Good breakfast"),
+    ("Quick lunch", "Quick lunch"),
     ("Last-min dinner", "Last-min dinner"),
     ("Impressing guests", "Impressing guests"),
     ("Date night", "Date night"),

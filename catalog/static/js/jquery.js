@@ -66,5 +66,45 @@ $(document).ready(function() {
   });
 
 
+// -- EXPERIMENTS
+  $('#JQtest1').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest2').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest3').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest4').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest5').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest6').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest7').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest8').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+  $('#JQtest9').click(function() {
+    $(this).toggleClass("customInputActive");
+  });
+
+
+
+
   //END DOC READY FUNCTION
   });

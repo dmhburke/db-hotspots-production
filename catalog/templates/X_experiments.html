@@ -1,0 +1,34 @@
+{% extends "_home_template.html" %}
+Test
+{% block contentName %}
+{% load static %}
+
+<form method="post" style="padding: 0px;">
+  {% csrf_token %}
+
+  <div class=inputSuperContainer>
+  <label class="inputContainer">
+    <span class=customLabel id=JQtest1>Great for breakfast</span>
+    <span class="customInput">{{form.checkbox1}}</span>
+  </label>
+
+  <label class="inputContainer">
+    <span class=customLabel id=JQtest2>New thing</span>
+    <span class="customInput">{{form.checkbox2}}</span>
+  </label>
+
+  </div>
+
+  <!-- <div class=inputSuperContainer>
+  <label class="inputContainer">
+    <span class=customLabel id=JQtest2>Something else</span>
+    <span class="customInput">{{form.checkbox2}}</span>
+  </label>
+  </div> -->
+
+  <br><br><br>
+  <button type=submit>Submit</button>
+
+</form>
+
+{% endblock %}

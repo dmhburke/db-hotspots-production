@@ -72,7 +72,17 @@ class MasterAddModel(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=60) # blank=True, null=True
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
-    perfect_for = MultiSelectField(choices=PERFECT_FOR, blank=True, null=True)
+    # START Perfect_for criteria
+    pf_breakfast = models.BooleanField(default=False)
+    pf_quick_lunch = models.BooleanField(default=False)
+    pf_last_min_dinner = models.BooleanField(default=False)
+    pf_impressing_guests = models.BooleanField(default=False)
+    pf_date_night = models.BooleanField(default=False)
+    pf_big_group = models.BooleanField(default=False)
+    pf_peace_quiet = models.BooleanField(default=False)
+    pf_living_large = models.BooleanField(default=False)
+    pf_sunny_days = models.BooleanField(default=False)
+    # END Perfect_for criteria
     notes = models.TextField(blank=True, null=True)
     city = models.CharField(max_length=30,blank=True, null=True)
     country = models.CharField(max_length=30,blank=True, null=True)
@@ -94,7 +104,17 @@ class CleanReviewModel(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=60) # blank=True, null=True
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
-    perfect_for = MultiSelectField(choices=PERFECT_FOR, blank=True, null=True)
+    # START Perfect_for criteria
+    pf_breakfast = models.BooleanField(default=False)
+    pf_quick_lunch = models.BooleanField(default=False)
+    pf_last_min_dinner = models.BooleanField(default=False)
+    pf_impressing_guests = models.BooleanField(default=False)
+    pf_date_night = models.BooleanField(default=False)
+    pf_big_group = models.BooleanField(default=False)
+    pf_peace_quiet = models.BooleanField(default=False)
+    pf_living_large = models.BooleanField(default=False)
+    pf_sunny_days = models.BooleanField(default=False)
+    # END Perfect_for criteria
     notes = models.TextField(blank=True, null=True)
     city = models.CharField(max_length=30,blank=True, null=True)
     country = models.CharField(max_length=30,blank=True, null=True)
@@ -118,7 +138,15 @@ def build_clean(sender, instance, **kwargs):
     user=instance.user,
     defaults = {
     'rating': instance.rating,
-    'perfect_for': instance.perfect_for,
+    'pf_breakfast': instance.pf_breakfast,
+    'pf_quick_lunch': instance.pf_quick_lunch,
+    'pf_last_min_dinner': instance.pf_last_min_dinner,
+    'pf_impressing_guests': instance.pf_impressing_guests,
+    'pf_date_night': instance.pf_date_night,
+    'pf_big_group': instance.pf_big_group,
+    'pf_peace_quiet': instance.pf_peace_quiet,
+    'pf_living_large': instance.pf_living_large,
+    'pf_sunny_days': instance.pf_sunny_days,
     'notes': instance.notes,
     'city': instance.city,
     'country': instance.country,
@@ -135,7 +163,17 @@ def build_clean(sender, instance, **kwargs):
 
 class SingleLocationRecord(models.Model):
     name = models.CharField(max_length=60) # blank=True, null=True
-    perfect_for = MultiSelectField(choices=PERFECT_FOR, blank=True, null=True)
+    # START Perfect_for criteria
+    pf_breakfast = models.IntegerField(blank=True, null=True)
+    pf_quick_lunch = models.IntegerField(blank=True, null=True)
+    pf_last_min_dinner = models.IntegerField(blank=True, null=True)
+    pf_impressing_guests = models.IntegerField(blank=True, null=True)
+    pf_date_night = models.IntegerField(blank=True, null=True)
+    pf_big_group = models.IntegerField(blank=True, null=True)
+    pf_peace_quiet = models.IntegerField(blank=True, null=True)
+    pf_living_large = models.IntegerField(blank=True, null=True)
+    pf_sunny_days = models.IntegerField(blank=True, null=True)
+    # END Perfect_for criteria
     notes = models.TextField(blank=True, null=True)
     city = models.CharField(max_length=30,blank=True, null=True)
     country = models.CharField(max_length=30,blank=True, null=True)
@@ -155,6 +193,16 @@ class SingleLocationRecord(models.Model):
 @receiver(post_save, sender=CleanReviewModel)
 def build_single(sender, instance, **kwargs):
 
+    count_pf_breakfast = CleanReviewModel.objects.filter(name=instance.name, pf_breakfast=True).count()
+    count_pf_quick_lunch = CleanReviewModel.objects.filter(name=instance.name, pf_quick_lunch=True).count()
+    count_pf_last_min_dinner = CleanReviewModel.objects.filter(name=instance.name, pf_last_min_dinner=True).count()
+    count_pf_impressing_guests = CleanReviewModel.objects.filter(name=instance.name, pf_impressing_guests=True).count()
+    count_pf_date_night = CleanReviewModel.objects.filter(name=instance.name, pf_date_night=True).count()
+    count_pf_big_group = CleanReviewModel.objects.filter(name=instance.name, pf_big_group=True).count()
+    count_pf_peace_quiet = CleanReviewModel.objects.filter(name=instance.name, pf_peace_quiet=True).count()
+    count_pf_living_large = CleanReviewModel.objects.filter(name=instance.name, pf_living_large=True).count()
+    count_pf_sunny_days = CleanReviewModel.objects.filter(name=instance.name, pf_sunny_days=True).count()
+
     count_wishlist = CleanReviewModel.objects.filter(name=instance.name, rating=None).count()
     count_ratings = CleanReviewModel.objects.filter(name=instance.name, rating__gte=1).count()
     sum_ratings = list(CleanReviewModel.objects.filter(name=instance.name).aggregate(Sum('rating')).values())[0]
@@ -166,7 +214,15 @@ def build_single(sender, instance, **kwargs):
     SingleLocationRecord.objects.update_or_create(
     name=instance.name,
     defaults = {
-    'perfect_for': instance.perfect_for,
+    'pf_breakfast': count_pf_breakfast,
+    'pf_quick_lunch': count_pf_quick_lunch,
+    'pf_last_min_dinner': count_pf_last_min_dinner,
+    'pf_impressing_guests': count_pf_impressing_guests,
+    'pf_date_night': count_pf_date_night,
+    'pf_big_group': count_pf_big_group,
+    'pf_peace_quiet': count_pf_peace_quiet,
+    'pf_living_large': count_pf_living_large,
+    'pf_sunny_days': count_pf_sunny_days,
     'notes': instance.notes,
     'city': instance.city,
     'country': instance.country,
@@ -203,3 +259,7 @@ class Notification(models.Model):
     image_link = models.CharField(max_length=200, null=True)
     trigger_min = models.IntegerField(blank=True, null=True)
     trigger_max = models.IntegerField(blank=True, null=True)
+
+class X_checkboxtest(models.Model):
+    checkbox1 = models.BooleanField(default=False)
+    checkbox2 = models.BooleanField(default=False)

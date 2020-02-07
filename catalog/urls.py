@@ -17,5 +17,6 @@ urlpatterns = [
     #User profile page
     path('profile/<user>', views.userprofile, name='userprofile'),
     path('profile/<user>/response', views.userprofileresponse, name='userprofileresponse'),
-
+    #--Experimentation page--
+    path('experiments', views.experiments, name='experiments')
 ]

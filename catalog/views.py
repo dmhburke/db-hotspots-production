@@ -20,7 +20,7 @@ from django.contrib.auth.models import User
 from catalog.models import CleanReviewModel, SingleLocationRecord, MasterAddModel, Notification
 
 #Import forms here
-from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderForm, BetaFeedbackForm#, UserNotificationForm
+from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderForm, BetaFeedbackForm, X_checkboxtestForm
 
 ## CREATE NEW ACCOUNT using Profile form and model
 def createaccount (request):
@@ -342,11 +342,71 @@ def findspot(request):
     your_rating = CleanReviewModel.objects.filter(user=request.user)
 
 ## SEARCH RESULT TO FIND ALL RESULTS
-    spot_finder = SingleLocationRecord.objects.filter(
+    if situation_result == "Good breakfast":
+        spot_finder = SingleLocationRecord.objects.filter(
+                   (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+                   Q(pf_breakfast__gt=0) &
+                   (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+                   ))
+
+    elif situation_result == "Quick lunch":
+        spot_finder = SingleLocationRecord.objects.filter(
+              (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+              Q(pf_quick_lunch__gt=0) &
+              (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+              ))
+
+    elif situation_result == "Last-min dinner":
+        spot_finder = SingleLocationRecord.objects.filter(
                (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
-               Q(perfect_for__contains=situation_result) &
+               Q(pf_last_min_dinner__gt=0) &
                (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
                ))
+    elif situation_result == "Impressing guests":
+        spot_finder = SingleLocationRecord.objects.filter(
+             (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+             Q(pf_impressing_guests__gt=0) &
+             (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+             ))
+
+    elif situation_result == "Date night":
+        spot_finder = SingleLocationRecord.objects.filter(
+              (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+              Q(pf_date_night__gt=0) &
+              (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+              ))
+    elif situation_result == "Big group":
+        spot_finder = SingleLocationRecord.objects.filter(
+             (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+             Q(pf_big_group__gt=0) &
+             (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+             ))
+
+    elif situation_result == "Peace & quiet":
+        spot_finder = SingleLocationRecord.objects.filter(
+              (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+              Q(pf_peace_quiet__gt=0) &
+              (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+              ))
+    elif situation_result == "Living large":
+        spot_finder = SingleLocationRecord.objects.filter(
+             (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+             Q(pf_living_large__gt=0) &
+             (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+             ))
+
+    elif situation_result == "Sunny days":
+        spot_finder = SingleLocationRecord.objects.filter(
+              (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+              Q(pf_sunny_days__gt=0) &
+              (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+              ))
+    else:
+        spot_finder = SingleLocationRecord.objects.filter(
+                   (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
+                   Q(pf_breakfast__gt=10**10) &
+                   (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
+                   ))
 
 ## HOTSPOTS RANKING ALGORITHM TO RANK RELEVANT RESULTS
     hotspots_rank = {}
@@ -548,3 +608,21 @@ def userprofileresponse(request, user):
     }
 
     return render(request, 'userprofileresponse.html', context=context)
+
+
+@login_required
+def experiments(request):
+
+    if request.method == 'POST':
+        form = X_checkboxtestForm(request.POST)
+        form.save()
+        return redirect('experiments')
+    else:
+        form = X_checkboxtestForm()
+
+
+    context = {
+    'form': form,
+    }
+
+    return render(request, 'X_experiments.html', context=context)

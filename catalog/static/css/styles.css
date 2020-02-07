@@ -105,13 +105,13 @@ ON CLICK EVENT here: https://www.w3schools.com/tags/ev_onclick.asp
 JQUERY option: http://jsfiddle.net/jvmwd18e/ */
 
 /* Hide the browser's default checkbox */
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
-}
+} */
 
 ul {
   list-style:none;
@@ -2446,6 +2446,7 @@ li {
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 5px;
+  padding-top: 7px;
 }
 
 
@@ -3722,4 +3723,74 @@ label {
   height: 200px;
   width: 100px;
   background-color: green;
+}
+
+
+/* EXPERIMENTS */
+
+/* Customize the label (the container) */
+.inputSuperContainer {
+  height: 100px;
+  width: 100%;
+  border: 1px solid black;
+  padding: 0px 5px;
+
+}
+/* Creates container for input to sit in */
+.inputContainer {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: white;
+  margin: 0px;
+  text-align: center;
+  /* border: 1px solid black; */
+  height: 25px;
+  width: 105px;
+}
+
+/* Hide the browser's default checkbox */
+.inputContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Creates custom label to hold input label */
+.customLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  font-family: var(--brandFont);
+  color: var(--mainBrandColor);
+  font-size: 12px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  padding: 2px 5px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+/* Create a custom input */
+.customInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  /* width: inherit; */
+}
+
+.customInputActive {
+  background-color: var(--mainBrandColor);
+  color: white;
+  border-radius: 5px;
 }
