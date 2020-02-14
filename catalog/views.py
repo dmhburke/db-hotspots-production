@@ -356,7 +356,7 @@ def findspot(request):
               (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
               ))
 
-    elif situation_result == "Last-min dinner":
+    elif situation_result == "Easy walk-in":
         spot_finder = SingleLocationRecord.objects.filter(
                (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
                Q(pf_last_min_dinner__gt=0) &
@@ -495,10 +495,46 @@ def browsespots(request):
 
     your_wishlist = CleanReviewModel.objects.filter(user=request.user, rating=None).order_by("-date")
 
+    # PULL IN PERFECT_FOR CATEGORIES INTO RESULTS
+    field_substring = 'pf_'
+    fieldsTest = [
+        field for field in CleanReviewModel._meta.get_fields() if field_substring in field.verbose_name
+        ]
+
+    print("""
+    --TUPLE LIST--
+    """)
+
+    fullPerfectForList = []
+    for spot in your_spots:
+        obj = CleanReviewModel.objects.get(user=request.user, rating__gte=0, name=spot.name)
+        fieldsResult = []
+        for field in fieldsTest:
+            if field.value_from_object(obj) == True:
+                def convert_response(value):
+                    switch_options = {
+                        "pf_breakfast": "Breakfast",
+                        "pf_quick_lunch": "Quick lunch",
+                        "pf_last_min_dinner": "Easy walk-in",
+                        "pf_impressing guests": "Impressing guests",
+                        "pf_date_night": "Date night",
+                        "pf_big_group": "Big group",
+                        "pf_peace_quiet": "Peace & quiet",
+                        "pf_living_large": "Living large",
+                        "pf_sunny_days": "Sunny days"
+                        }
+                    return switch_options.get(value, "Invalid response")
+                converted_name = convert_response(field.verbose_name)
+                fieldsResult.append(converted_name)
+        spotPerfectFor = [spot.name, fieldsResult]
+        print(spotPerfectFor)
+        fullPerfectForList.append(spotPerfectFor)
+
     context={
     'activity_stream': activity_stream,
     'your_spots': your_spots,
     'your_wishlist': your_wishlist,
+    'fullPerfectForList': fullPerfectForList,
     }
 
     return render(request,'browsespots.html', context=context)

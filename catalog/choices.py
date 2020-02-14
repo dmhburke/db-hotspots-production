@@ -35,7 +35,7 @@ SITUATION = (
     ("", "Situation"),
     ("Good breakfast", "Good breakfast"),
     ("Quick lunch", "Quick lunch"),
-    ("Last-min dinner", "Last-min dinner"),
+    ("Easy walk-in", "Easy walk-in"),
     ("Impressing guests", "Impressing guests"),
     ("Date night", "Date night"),
     ("Big group", "Big group"),
