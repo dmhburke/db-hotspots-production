@@ -74,6 +74,17 @@
     <div id=spotFinderTextBox>has hotspotted</div> <!--{{spot.count_ratings|floatformat}} have been here -->
     </div>
 
+    <div id=spotFinderPerfectForBox>
+      {% for item in findPerfectForList %}
+        {% if spot.name == item.0 %}
+          {% for pf in item.1 %}
+          <div id=perferctForItem>{{pf}}</div>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      <!-- {{findPerfectForList.0.1}} -->
+    </div>
+
     <div class=spotFinderText id=spotFinderYouText>You</div>
     {% if your_rating %}
     <div id=spotFinderYourRating class="brandFont ratingNotBeen" style="padding-top: 20px;">No<br>rating</div>

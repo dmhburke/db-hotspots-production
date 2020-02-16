@@ -47,11 +47,23 @@
   <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
   <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
   <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
+  <!-- START User notes and perfect section -->
   {% if entry.notes %}
   <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
   {% else %}
-  <div id=browseAllActivityUserNotesFalse>No notes entered</div>
+  <div id=browseAllActivityUserNotes style="color: grey;">No notes</div>
   {% endif %}
+  <div id=browseAllActivityPerfectFor>
+    {% for spot in fullPerfectForList %}
+      {% if entry.name == spot.0 %}
+        {% for pf in spot.1 %}
+        <div id=perferctForItem>{{pf}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <!-- END User notes and perfect section -->
+
 </div>
 </a>
 
@@ -94,11 +106,29 @@
     <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
     <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
     <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
-    {% if entry.notes %}
+    <!-- {% if entry.notes %}
     <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
     {% else %}
     <div id=browseAllActivityUserNotesFalse>No notes entered</div>
+    {% endif %} -->
+
+    <!-- START User notes and perfect section -->
+    {% if entry.notes %}
+    <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
+    {% else %}
+    <div id=browseAllActivityUserNotes style="color: grey;">No notes</div>
     {% endif %}
+    <div id=browseAllActivityPerfectFor>
+      {% for spot in fullPerfectForList %}
+        {% if entry.name == spot.0 %}
+          {% for pf in spot.1 %}
+          <div id=perferctForItem>{{pf}}</div>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <!-- END User notes and perfect section -->
+
   </div>
   </a>
 
@@ -140,11 +170,29 @@
   <div id=browseAllActivitySpotDate>{{entry.date|date:'j M'}}</div>
   <div id=browseAllActivityUserImg style="background-image: url({{ entry.user.profile.userpic.url }}); background-size: cover"></div>
   <div id=browseAllActivitySpotUsername>{{entry.user}}</div>
-  {% if entry.notes %}
+  <!-- {% if entry.notes %}
   <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
   {% else %}
   <div id=browseAllActivityUserNotesFalse>No notes entered</div>
+  {% endif %} -->
+
+  <!-- START User notes and perfect section -->
+  {% if entry.notes %}
+  <div id=browseAllActivityUserNotes>{{entry.notes}}</div>
+  {% else %}
+  <div id=browseAllActivityUserNotes style="color: grey;">No notes</div>
   {% endif %}
+  <div id=browseAllActivityPerfectFor>
+    {% for spot in fullPerfectForList %}
+      {% if entry.name == spot.0 %}
+        {% for pf in spot.1 %}
+        <div id=perferctForItem>{{pf}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <!-- END User notes and perfect section -->
+
   </div>
   </a>
 
@@ -155,6 +203,8 @@
     <div class=browseNoResultsText id=browseNoResultsHomeLink>Click here to add spots</div>
   </a>
   {% endif %}
+
+
 
 
 </div>

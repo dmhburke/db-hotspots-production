@@ -164,15 +164,15 @@ def build_clean(sender, instance, **kwargs):
 class SingleLocationRecord(models.Model):
     name = models.CharField(max_length=60) # blank=True, null=True
     # START Perfect_for criteria
-    pf_breakfast = models.IntegerField(blank=True, null=True)
-    pf_quick_lunch = models.IntegerField(blank=True, null=True)
-    pf_last_min_dinner = models.IntegerField(blank=True, null=True)
-    pf_impressing_guests = models.IntegerField(blank=True, null=True)
-    pf_date_night = models.IntegerField(blank=True, null=True)
-    pf_big_group = models.IntegerField(blank=True, null=True)
-    pf_peace_quiet = models.IntegerField(blank=True, null=True)
-    pf_living_large = models.IntegerField(blank=True, null=True)
-    pf_sunny_days = models.IntegerField(blank=True, null=True)
+    pf_breakfast = models.BooleanField("single_pf_breakfast", default=False)
+    pf_quick_lunch = models.BooleanField("single_pf_quick_lunch", default=False)
+    pf_last_min_dinner = models.BooleanField("single_pf_last_min_dinner", default=False)
+    pf_impressing_guests = models.BooleanField("single_pf_impressing guests", default=False)
+    pf_date_night = models.BooleanField("single_pf_date_night", default=False)
+    pf_big_group = models.BooleanField("single_pf_big_group", default=False)
+    pf_peace_quiet = models.BooleanField("single_pf_peace_quiet", default=False)
+    pf_living_large = models.BooleanField("single_pf_living_large", default=False)
+    pf_sunny_days = models.BooleanField("single_pf_sunny_days", default=False)
     # END Perfect_for criteria
     notes = models.TextField(blank=True, null=True)
     city = models.CharField(max_length=30,blank=True, null=True)
