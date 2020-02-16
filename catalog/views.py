@@ -493,7 +493,7 @@ def findspot(request):
                         "single_pf_impressing guests": "Impressing guests 🎩",
                         "single_pf_date_night": "Date night ❤️",
                         "single_pf_big_group": "Big group 👨‍👩‍👧‍👧",
-                        "single_pf_peace_quiet": "Peace & quiet 🔇",
+                        "single_pf_peace_quiet": "Peace & quiet 📚",
                         "single_pf_living_large": "Living large 💵",
                         "single_pf_sunny_days": "Sunny days ☀️"
                         }
@@ -568,7 +568,10 @@ def browsespots(request):
 
     fullPerfectForList = []
     for spot in your_spots_wish:
-        obj = CleanReviewModel.objects.get(name=spot.name) #rating__gte=0,
+        try:
+            obj = CleanReviewModel.objects.get(name=spot.name, rating__gte=0)
+        except:
+            obj = CleanReviewModel.objects.get(name=spot.name, rating=None)
         fieldsResult = []
         for field in fieldsTest:
             if field.value_from_object(obj) == True:
@@ -580,7 +583,7 @@ def browsespots(request):
                         "pf_impressing guests": "Impressing guests 🎩",
                         "pf_date_night": "Date night ❤️",
                         "pf_big_group": "Big group 👨‍👩‍👧‍👧",
-                        "pf_peace_quiet": "Peace & quiet 🔇",
+                        "pf_peace_quiet": "Peace & quiet 📚",
                         "pf_living_large": "Living large 💵",
                         "pf_sunny_days": "Sunny days ☀️"
                         }
