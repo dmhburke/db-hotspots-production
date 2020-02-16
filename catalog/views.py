@@ -554,7 +554,7 @@ def browsespots(request):
 
     your_spots = CleanReviewModel.objects.filter(user=request.user, rating__gte=0).order_by("-rating", "-date")
     your_wishlist = CleanReviewModel.objects.filter(user=request.user, rating=None).order_by("-date")
-    your_spots_wish = CleanReviewModel.objects.filter(user=request.user)
+    perfect_for_spots = CleanReviewModel.objects.all()
 
     # PULL IN PERFECT_FOR CATEGORIES INTO RESULTS
     field_substring = 'pf_'
@@ -567,7 +567,7 @@ def browsespots(request):
     """)
 
     fullPerfectForList = []
-    for spot in your_spots_wish:
+    for spot in perfect_for_spots:
         try:
             obj = CleanReviewModel.objects.get(name=spot.name, rating__gte=0)
         except:
