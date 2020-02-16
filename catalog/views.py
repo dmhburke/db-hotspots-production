@@ -402,11 +402,7 @@ def findspot(request):
               (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
               ))
     else:
-        spot_finder = SingleLocationRecord.objects.filter(
-                   (Q(postcode__startswith=postcode_result1) | Q(postcode__startswith=postcode_result2) | Q(postcode__startswith=postcode_result3) | Q(postcode__startswith=postcode_result4)) &
-                   Q(pf_breakfast__gt=10**10) &
-                   (Q(category1__contains=optioncategory1_result) | Q(category1__contains=optioncategory2_result) | Q(category1__contains=optioncategory3_result)
-                   ))
+        spot_finder = SingleLocationRecord.objects.filter(name="")
 
 ## HOTSPOTS RANKING ALGORITHM TO RANK RELEVANT RESULTS
     hotspots_rank = {}
