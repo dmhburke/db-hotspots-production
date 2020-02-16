@@ -2795,7 +2795,7 @@ label {
   left: 80px;
   height: 25px;
   width: 190px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   overflow-x: scroll;
   white-space: nowrap;
   padding-top: 2px;
@@ -3146,7 +3146,7 @@ label {
   text-align: center;
   height: 25px;
   width: 190px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   overflow-y: hidden;
   overflow-x: scroll;
   white-space: nowrap;
@@ -3165,6 +3165,7 @@ label {
   color: var(--mainBrandColor);
   font-family: var(--brandFont);
   border: 1px solid var(--mainBrandColor);
+  font-size: 10px;
 
 }
 

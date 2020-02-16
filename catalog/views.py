@@ -487,15 +487,15 @@ def findspot(request):
             if field_value > 0:
                 def convert_response(value):
                     switch_options = {
-                        "single_pf_breakfast": "Breakfast",
-                        "single_pf_quick_lunch": "Quick lunch",
-                        "single_pf_last_min_dinner": "Easy walk-in",
-                        "single_pf_impressing guests": "Impressing guests",
-                        "single_pf_date_night": "Date night",
-                        "single_pf_big_group": "Big group",
-                        "single_pf_peace_quiet": "Peace & quiet",
-                        "single_pf_living_large": "Living large",
-                        "single_pf_sunny_days": "Sunny days"
+                        "single_pf_breakfast": "Breakfast 🍳",
+                        "single_pf_quick_lunch": "Quick lunch 🥪",
+                        "single_pf_last_min_dinner": "Easy walk-in 🚶‍",
+                        "single_pf_impressing guests": "Impressing guests 🎩",
+                        "single_pf_date_night": "Date night ❤️",
+                        "single_pf_big_group": "Big group 👨‍👩‍👧‍👧",
+                        "single_pf_peace_quiet": "Peace & quiet 🔇",
+                        "single_pf_living_large": "Living large 💵",
+                        "single_pf_sunny_days": "Sunny days ☀️"
                         }
                     return switch_options.get(value, "Invalid response")
                 converted_name = convert_response(field.verbose_name)
@@ -568,21 +568,21 @@ def browsespots(request):
 
     fullPerfectForList = []
     for spot in your_spots_wish:
-        obj = CleanReviewModel.objects.get(user=request.user, name=spot.name) #rating__gte=0,
+        obj = CleanReviewModel.objects.get(name=spot.name) #rating__gte=0,
         fieldsResult = []
         for field in fieldsTest:
             if field.value_from_object(obj) == True:
                 def convert_response(value):
                     switch_options = {
-                        "pf_breakfast": "Breakfast",
-                        "pf_quick_lunch": "Quick lunch",
-                        "pf_last_min_dinner": "Easy walk-in",
-                        "pf_impressing guests": "Impressing guests",
-                        "pf_date_night": "Date night",
-                        "pf_big_group": "Big group",
-                        "pf_peace_quiet": "Peace & quiet",
-                        "pf_living_large": "Living large",
-                        "pf_sunny_days": "Sunny days"
+                        "pf_breakfast": "Breakfast 🍳",
+                        "pf_quick_lunch": "Quick lunch 🥪",
+                        "pf_last_min_dinner": "Easy walk-in 🚶‍",
+                        "pf_impressing guests": "Impressing guests 🎩",
+                        "pf_date_night": "Date night ❤️",
+                        "pf_big_group": "Big group 👨‍👩‍👧‍👧",
+                        "pf_peace_quiet": "Peace & quiet 🔇",
+                        "pf_living_large": "Living large 💵",
+                        "pf_sunny_days": "Sunny days ☀️"
                         }
                     return switch_options.get(value, "Invalid response")
                 converted_name = convert_response(field.verbose_name)
