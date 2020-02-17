@@ -25,7 +25,7 @@ from catalog.forms import ProfileForm, AddSpotsForm, MasterAddForm, SpotFinderFo
 ## CREATE NEW ACCOUNT using Profile form and model
 def createaccount (request):
     """Create user account"""
-# Add view details here
+    #Add view details here
     #Email notification details (triggered on form submit)
     subject = 'HotSpots | New user registration'
     message = 'A new user has just signed up. To see sign-up details, click www.usehotspots.com/admin'
@@ -568,10 +568,7 @@ def browsespots(request):
 
     fullPerfectForList = []
     for spot in perfect_for_spots:
-        try:
-            obj = CleanReviewModel.objects.get(name=spot.name, rating__gte=0)
-        except:
-            obj = CleanReviewModel.objects.get(name=spot.name, rating=None)
+        obj = spot
         fieldsResult = []
         for field in fieldsTest:
             if field.value_from_object(obj) == True:
