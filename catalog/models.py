@@ -193,15 +193,16 @@ class SingleLocationRecord(models.Model):
 @receiver(post_save, sender=CleanReviewModel)
 def build_single(sender, instance, **kwargs):
 
-    count_pf_breakfast = CleanReviewModel.objects.filter(name=instance.name, pf_breakfast=True).count()
-    count_pf_quick_lunch = CleanReviewModel.objects.filter(name=instance.name, pf_quick_lunch=True).count()
-    count_pf_last_min_dinner = CleanReviewModel.objects.filter(name=instance.name, pf_last_min_dinner=True).count()
-    count_pf_impressing_guests = CleanReviewModel.objects.filter(name=instance.name, pf_impressing_guests=True).count()
-    count_pf_date_night = CleanReviewModel.objects.filter(name=instance.name, pf_date_night=True).count()
-    count_pf_big_group = CleanReviewModel.objects.filter(name=instance.name, pf_big_group=True).count()
-    count_pf_peace_quiet = CleanReviewModel.objects.filter(name=instance.name, pf_peace_quiet=True).count()
-    count_pf_living_large = CleanReviewModel.objects.filter(name=instance.name, pf_living_large=True).count()
-    count_pf_sunny_days = CleanReviewModel.objects.filter(name=instance.name, pf_sunny_days=True).count()
+    # ADD WHEN READY TO COUNT
+    # count_pf_breakfast = CleanReviewModel.objects.filter(name=instance.name, pf_breakfast=True).count()
+    # count_pf_quick_lunch = CleanReviewModel.objects.filter(name=instance.name, pf_quick_lunch=True).count()
+    # count_pf_last_min_dinner = CleanReviewModel.objects.filter(name=instance.name, pf_last_min_dinner=True).count()
+    # count_pf_impressing_guests = CleanReviewModel.objects.filter(name=instance.name, pf_impressing_guests=True).count()
+    # count_pf_date_night = CleanReviewModel.objects.filter(name=instance.name, pf_date_night=True).count()
+    # count_pf_big_group = CleanReviewModel.objects.filter(name=instance.name, pf_big_group=True).count()
+    # count_pf_peace_quiet = CleanReviewModel.objects.filter(name=instance.name, pf_peace_quiet=True).count()
+    # count_pf_living_large = CleanReviewModel.objects.filter(name=instance.name, pf_living_large=True).count()
+    # count_pf_sunny_days = CleanReviewModel.objects.filter(name=instance.name, pf_sunny_days=True).count()
 
     count_wishlist = CleanReviewModel.objects.filter(name=instance.name, rating=None).count()
     count_ratings = CleanReviewModel.objects.filter(name=instance.name, rating__gte=1).count()
@@ -214,15 +215,15 @@ def build_single(sender, instance, **kwargs):
     SingleLocationRecord.objects.update_or_create(
     name=instance.name,
     defaults = {
-    'pf_breakfast': count_pf_breakfast,
-    'pf_quick_lunch': count_pf_quick_lunch,
-    'pf_last_min_dinner': count_pf_last_min_dinner,
-    'pf_impressing_guests': count_pf_impressing_guests,
-    'pf_date_night': count_pf_date_night,
-    'pf_big_group': count_pf_big_group,
-    'pf_peace_quiet': count_pf_peace_quiet,
-    'pf_living_large': count_pf_living_large,
-    'pf_sunny_days': count_pf_sunny_days,
+    'pf_breakfast': instance.pf_breakfast,
+    'pf_quick_lunch': instance.pf_quick_lunch,
+    'pf_last_min_dinner': instance.pf_last_min_dinner,
+    'pf_impressing_guests': instance.pf_impressing_guests,
+    'pf_date_night': instance.pf_date_night,
+    'pf_big_group': instance.pf_big_group,
+    'pf_peace_quiet': instance.pf_peace_quiet,
+    'pf_living_large': instance.pf_living_large,
+    'pf_sunny_days': instance.pf_sunny_days,
     'notes': instance.notes,
     'city': instance.city,
     'country': instance.country,
